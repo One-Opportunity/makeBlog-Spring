@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardComment">
+
+	<select id="selectList" parameterType="Integer" resultType="kr.co.jwo.board.dto.BoardCommentDTO">
+		SELECT BC.*
+		, FN_USERNAME(BC.USER_ID) AS NAME
+		FROM TB_BOARD_COMMENT BC
+		WHERE DOC_ID = #{docId}
+		ORDER BY COMMENT_ID DESC
+	</select>
+	<insert id="insert" parameterType="kr.co.jwo.board.dto.BoardCommentDTO">
+		<selectKey keyProperty="commentId" resultType="Integer" order="BEFORE">
+			SELECT SEQ_COMMENT.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TB_BOARD_COMMENT(
+		COMMENT_ID
+		, DOC_ID
+		, USER_ID
+		, COMMENTS
+		, REG_DT
+		) VALUES (
+		#{commentId}
+		, #{docId}
+		, #{userId}
+		, #{comments}
+		, SYSDATE
+		)
+	</insert>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE
+		FROM TB_BOARD_COMMENT
+		WHERE COMMENT_ID = #{commentId}
+	</delete>
+
+	<delete id="deleteByDocId" parameterType="Integer">
+		DELETE
+		FROM TB_BOARD_COMMENT
+		WHERE DOC_ID = #{docId}
+	</delete>
+
+</mapper>

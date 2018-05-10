@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDoc">
+
+	<!-- 총 게시물 갯수 count 쿼리 -->
+	<select id="selectCount" parameterType="kr.co.jwo.board.dto.BoardSearchDTO" resultType="Integer">
+		SELECT COUNT(*)
+		FROM TB_BOARD_DOC
+		WHERE MAP_ID = #{mapId}
+		<if test="searchType != null and searchType != ''">
+			<choose>
+				<when test="searchType eq 'T'.toString()">
+					AND TITLE LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchType eq 'C'.toString()">
+					AND BOARD_CONTENTS LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchType eq 'TC'.toString()">
+					AND (TITLE LIKE '%' || #{searchText} || '%'
+					OR BOARD_CONTENTS LIKE '%' || #{searchText} || '%'
+					)
+				</when>
+				<when test="searchType eq 'U'.toString()">
+					AND USER_ID IN (
+					SELECT USER_ID
+					FROM TB_USER
+					WHERE NAME LIKE '%' || #{searchText} || '%'
+					)
+				</when>
+			</choose>
+		</if>
+		ORDER BY DOC_ID DESC
+	</select>
+
+	<!-- userId count 쿼리 -->
+	<select id="selectCountByUserId" parameterType="kr.co.jwo.board.dto.BoardSearchDTO" resultType="Integer">
+		SELECT COUNT(*)
+		FROM TB_BOARD_DOC
+		WHERE USER_ID = #{userId}
+		<if test="searchType != null and searchType != ''">
+			<choose>
+				<when test="searchType eq 'T'.toString()">
+					AND TITLE LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchType eq 'C'.toString()">
+					AND BOARD_CONTENTS LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchType eq 'TC'.toString()">
+					AND (TITLE LIKE '%' || #{searchText} || '%'
+					OR BOARD_CONTENTS LIKE '%' || #{searchText} || '%'
+					)
+				</when>
+				<when test="searchType eq 'U'.toString()">
+					AND USER_ID IN (
+					SELECT USER_ID
+					FROM TB_USER
+					WHERE NAME LIKE '%' || #{searchText} || '%'
+					)
+				</when>
+			</choose>
+		</if>
+		ORDER BY DOC_ID DESC
+	</select>
+
+	<insert id="insertData" parameterType="kr.co.jwo.board.dto.BoardDocDTO">
+		<selectKey keyProperty="docId" resultType="int" order="BEFORE">
+			SELECT SEQ_DOC.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TB_BOARD_DOC(
+		DOC_ID
+		,USER_ID
+		,MAP_ID
+		,TITLE
+		,BOARD_CONTENTS
+		,CNT_READ
+		,REG_DT
+		)
+		VALUES
+		(
+		#{docId}
+		,#{userId}
+		,#{mapId}
+		,#{title}
+		,#{boardContents}
+		,0
+		,SYSDATE
+		)
+	</insert>
+
+	<update id="updateData" parameterType="kr.co.jwo.board.dto.BoardDocDTO">
+		UPDATE TB_BOARD_DOC
+		SET
+		TITLE = #{title}
+		,BOARD_CONTENTS = #{boardContents}
+		WHERE
+		DOC_ID = #{docId}
+	</update>
+
+	<delete id="deleteData" parameterType="int">
+		DELETE FROM TB_BOARD_DOC
+		WHERE DOC_ID = #{docId}
+	</delete>
+
+	<select id="selectOneData" parameterType="int" resultType="kr.co.jwo.board.dto.BoardDocDTO">
+		SELECT BC.*
+		, FN_USERNAME(BC.USER_ID) AS NAME
+		FROM TB_BOARD_DOC BC
+		WHERE DOC_ID = #{docId}
+	</select>
+
+	<select id="selectListByMapId" parameterType="kr.co.jwo.board.dto.BoardSearchDTO" resultType="kr.co.jwo.board.dto.BoardDocDTO">
+		SELECT B.*
+		, FN_USERNAME(B.USER_ID) AS NAME
+		, (SELECT COUNT(*) FROM TB_BOARD_FILE BF WHERE BF.DOC_ID = B.DOC_ID) AS CNT_FILE
+		, (SELECT COUNT(*) FROM TB_BOARD_COMMENT BC WHERE B.DOC_ID = BC.DOC_ID) AS CNT_COMMENT
+		FROM (
+		SELECT ROWNUM AS RN, A.*
+		FROM (
+		SELECT BD.*
+		FROM TB_BOARD_DOC BD
+		WHERE MAP_ID = #{mapId}
+		<if test="searchType != null and searchType != ''">
+			<choose>
+				<when test="searchType eq 'T'.toString()">
+					AND TITLE LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchType eq 'C'.toString()">
+					AND BOARD_CONTENTS LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchType eq 'TC'.toString()">
+					AND (TITLE LIKE '%' || #{searchText} || '%'
+					OR BOARD_CONTENTS LIKE '%' || #{searchText} || '%'
+					)
+				</when>
+				<when test="searchType eq 'U'.toString()">
+					AND USER_ID IN (
+					SELECT USER_ID
+					FROM TB_USER
+					WHERE NAME LIKE '%' || #{searchText} || '%'
+					)
+				</when>
+			</choose>
+		</if>
+		ORDER BY REG_DT DESC
+		) A
+		WHERE ROWNUM <![CDATA[ <= ]]>
+		(#{page} * #{rows})
+		)B
+		WHERE RN <![CDATA[ > ]]>
+		(#{page}-1) * #{rows}
+
+	</select>
+
+	<select id="selectListByUserId" parameterType="kr.co.jwo.board.dto.BoardSearchDTO" resultType="kr.co.jwo.board.dto.BoardDocDTO">
+		SELECT B.*,
+		FN_USERNAME(B.USER_ID) AS NAME,
+		FN_FILENUM(B.DOC_ID) AS CNT_FILE,
+		(SELECT COUNT(*) FROM TB_BOARD_COMMENT BC WHERE B.DOC_ID = BC.DOC_ID) AS CNT_COMMENT
+		
+		FROM (
+		SELECT ROWNUM AS RN, A.*
+		FROM (
+		SELECT BD.*, (SELECT BM.MAP_NAME FROM TB_BOARD_MAP BM WHERE BD.MAP_ID = BM.MAP_ID) AS MAP_NAME
+		FROM TB_BOARD_DOC BD
+		WHERE USER_ID = #{userId}
+		<if test="searchType != null and searchType != ''">
+			<choose>
+				<when test="searchType eq 'T'.toString()">
+					AND TITLE LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchType eq 'C'.toString()">
+					AND BOARD_CONTENTS LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchType eq 'TC'.toString()">
+					AND (TITLE LIKE '%' || #{searchText} || '%'
+					OR BOARD_CONTENTS LIKE '%' || #{searchText} || '%'
+					)
+				</when>
+				<when test="searchType eq 'U'.toString()">
+					AND USER_ID IN (
+					SELECT USER_ID
+					FROM TB_USER
+					WHERE NAME LIKE '%' || #{searchText} || '%'
+					)
+				</when>
+			</choose>
+		</if>
+		ORDER BY REG_DT DESC
+		) A
+		WHERE ROWNUM <![CDATA[ <= ]]>
+		(#{page} * #{rows})
+		)B
+		WHERE RN <![CDATA[ > ]]>
+		(#{page}-1) * #{rows}
+	</select>
+	<update id="updateByCntRead" parameterType="int">
+		UPDATE TB_BOARD_DOC
+		SET CNT_READ = CNT_READ+1
+		WHERE DOC_ID = #{docId}
+
+	</update>
+
+	<select id="selectListMyComment" parameterType="Integer" resultType="kr.co.jwo.board.dto.BoardDocDTO">
+		SELECT BD.*, (SELECT BM.MAP_NAME FROM TB_BOARD_MAP BM WHERE BD.MAP_ID = BM.MAP_ID) AS MAP_NAME
+		FROM TB_BOARD_DOC BD
+		WHERE DOC_ID in (
+		SELECT DOC_ID FROM TB_BOARD_COMMENT WHERE USER_ID = #{userId}
+		)
+	</select>
+
+</mapper>

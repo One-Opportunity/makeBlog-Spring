@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Popup">
+
+	<insert id="insert" parameterType="kr.co.jwo.popup.dto.PopupDTO">
+		<selectKey keyProperty="popId" resultType="Integer" order="BEFORE">
+          SELECT SEQ_POPUP.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TB_POPUP (
+		POP_ID
+		, POP_TITLE
+		, POPUP_YN
+		, REG_DT
+		) VALUES (
+		#{popId}
+		, #{popTitle}
+		, #{popupYn}
+		, SYSDATE
+		)
+	</insert>
+
+	<select id="selectList" resultType="kr.co.jwo.popup.dto.PopupDTO">
+		SELECT *
+		FROM TB_POPUP
+	</select>
+
+	<select id="selectOne" parameterType="Integer" resultType="kr.co.jwo.popup.dto.PopupDTO">
+		SELECT *
+		FROM TB_POPUP
+		WHERE POP_ID = #{popId}
+	</select>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM TB_POPUP
+		WHERE POP_ID = #{popId}
+	</delete>
+
+	<update id="update" parameterType="kr.co.jwo.popup.dto.PopupDTO">
+		UPDATE TB_POPUP
+		SET
+		POP_TITLE= #{popTitle}
+		, POPUP_YN = #{popupYn}
+		WHERE POP_ID = #{popId}
+	</update>
+</mapper>

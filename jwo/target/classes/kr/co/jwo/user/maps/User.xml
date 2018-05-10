@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<insert id="insertData" parameterType="kr.co.jwo.user.dto.UserDTO">
+		<selectKey keyProperty="userId" resultType="int" order="BEFORE">
+			SELECT SEQ_USER.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TB_USER(
+		USER_ID
+		,LOGIN_ID
+		,LOGIN_PW
+		,NAME
+		,PHONE
+		,EMAIL
+		)
+		VALUES
+		(
+		#{userId}
+		,#{loginId}
+		,#{loginPw}
+		,#{name}
+		,#{phone}
+		,#{email}
+		)
+	</insert>
+
+	<update id="updateData" parameterType="kr.co.jwo.user.dto.UserDTO">
+		UPDATE TB_USER
+		SET
+		LOGIN_ID = #{loginId}
+		,LOGIN_PW = #{loginPw}
+		,NAME = #{name}
+		,PHONE = #{phone}
+		,EMAIL = #{email}
+		WHERE
+		USER_ID = #{userId}
+	</update>
+
+	<delete id="deleteData" parameterType="int">
+		DELETE FROM TB_USER
+		WHERE
+		USER_ID = #{userId}
+	</delete>
+
+	<select id="selectData" parameterType="int" resultType="kr.co.jwo.user.dto.UserDTO">
+		SELECT * FROM TB_USER
+		WHERE USER_ID = #{userId}
+	</select>
+
+	<select id="selectCountByLoginId" parameterType="String" resultType="int">
+		SELECT COUNT(*) AS CNT
+		FROM TB_USER
+		WHERE LOGIN_ID =
+		#{loginId}
+	</select>
+	<select id="selectCountByPhone" parameterType="String" resultType="int">
+		SELECT COUNT(*) AS CNT
+		FROM TB_USER
+		WHERE PHONE = #{phone}
+	</select>
+	<select id="selectCountByEmail" parameterType="String" resultType="int">
+		SELECT COUNT(*) AS CNT
+		FROM TB_USER
+		WHERE EMAIL = #{email}
+	</select>
+
+	<select id="selectByLoginId" parameterType="String" resultType="kr.co.jwo.user.dto.UserDTO">
+		SELECT *
+		FROM TB_USER
+		WHERE LOGIN_ID= #{loginId}
+	</select>
+
+	<!-- ID 찾기 -->
+	<select id="selectOneByEmail" parameterType="String" resultType="kr.co.jwo.user.dto.UserDTO">
+		SELECT *
+		FROM TB_USER
+		WHERE EMAIL = #{email}
+	</select>
+	
+	<!-- PW 찾기 -->
+	<select id="selectOneByLoginIdAndEmail" parameterType="kr.co.jwo.user.dto.UserDTO" resultType="kr.co.jwo.user.dto.UserDTO">
+		SELECT *
+		FROM TB_USER
+		WHERE LOGIN_ID = #{loginId}
+		AND EMAIL = #{email}
+	</select>
+</mapper>

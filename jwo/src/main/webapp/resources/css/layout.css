@@ -1,0 +1,148 @@
+@charset "utf-8";
+/* root */
+html,body{width:100%;height:100%;margin:0;padding:0; background-color:#666666}
+#wrap{height:auto; width:100%; position:relative; display:inline-block;*display:inline; vertical-align:top;zoom:1}
+#loginWrap{width:100%;; height:100%; position:relative; clear:both}
+
+/* header 시작 */
+#header{background-color:#c6cad3; width:100%; min-width:1200px; height:60px; position:absolute; top:0; left:0; z-index:1}
+	#header ul{margin-left:320px; text-align:center}
+	#header ul li{display:inline-block;*display:inline; vertical-align:top;zoom:1; height:40px; padding:10px 15px 10px 15px}
+		#header ul li a{text-decoration:none; color:#222222; display:block; height:40px; font-size:15px; font-weight:700;line-height:40px; padding:0 15px 0 15px}
+		#header ul li a:hover{background-color:#4b78d6; color:#fff; border-radius:8px;}
+		#header ul li .on, #header ul li .on:hover{background-color:#4b78d6; color:#fff; border-radius:8px;}
+/* header 끝 */
+
+/* left 시작 */
+#leftWrap{height:100%; background-color:#32444f; width:320px;  position:absolute; top:0; left:0; z-index:2;}
+	#leftWrap #infoWrap{padding:5%; width:90%; clear:both; background-color:#299ae1}
+		.info_txt{width:100%; clear:both; position:relative; padding-bottom:25px;}
+		.info_txt p{color:#fff;}
+		.info_txt p.info_name{font-size:25px; font-weight:700; padding:15px 0 0 80px}
+		.info_txt p.info_date{font-size:13px; font-weight:200; padding:10px 0 0 85px}
+		.info_txt p.info_pic{width:60px; height:60px; border:5px solid #0a6dab; border-radius:35px; overflow:hidden; position:absolute; top:0; left:0}
+		.info_txt p.info_pic img{width:100%; height:100%;}
+	#leftWrap #infoWrap span a{display:block; width:100%; height:40px; line-height:40px; text-align:center; text-decoration:none; font-size:16px; font-weight:700; color:#1b78b2; border:1px solid #0a6dab; border-radius:5px; background-color:#fff; box-shadow:0 5px 0px rgba(0, 0, 0, .1);}
+	#leftWrap #infoWrap span a:hover{background-color:#0a6dab; color:#fff}
+	#leftWrap #category{clear:both; padding:5%}
+
+/* dtree 시작 */
+.dtree {font-family:dotum; letter-spacing:-1px;	font-size: 12px;color: #fff;white-space: nowrap;width:95%; position:relative; padding-left:10px;}
+.dtree img {border: 0px;vertical-align: middle;}
+.dtree a {color: #fff;text-decoration: none;}
+.dtree a.node, .dtree a.nodeSel {white-space: nowrap;padding: 1px 2px 1px 2px;}
+.dtree a.node:hover, .dtree a.nodeSel:hover {color: #2D91EF;text-decoration: underline;}
+.dtree a.nodeSel {background-color: #cbdbf4;font-weight:bold;color:#2055aa;}
+.dtree .clip {overflow: hidden;}
+.dTreeNode{position:relative;}
+.dtreeDepth1{width:176px; padding:0 64px 0 0}
+.dtreeDepth1 a{font-weight:bold}
+.dtreeDepth2{width:176px; padding:0 64px 0 0}
+.dtreeDepth2 a{color:#ccc}
+.dtreeDepth3{width:240px;}
+.dtreeDepth3 a{color:#999}
+.dTreeNum{width:64px; height:16px; position:absolute; top:0; right:0; clear:both}
+.dTreeNum span{height:16px; line-height:16px; color:#ccc; float:left; text-align:center; font-weight:bold; font-size:11px}
+.dtreeBGcolor1{background-color:#e84599}
+.dtreeBGcolor2{background-color:#5b99f4}
+.dtreeBGcolor3{background-color:#3d79d0}
+.dtreeW100{width:100%}
+.dtreeW50{width:50% !important}
+/* dtree 끝 */
+/* left 끝 */
+
+/* right 시작 */
+#rightWrap{margin-left:320px; min-height:1080px; height:auto; background-color:#fff; z-index:0; padding-left:30px; padding-right:30px; position:relative;}
+	
+	.rightBlock{width:100%; height:100%; position:relative; clear:both}
+	
+	/* page title 시작 */
+	#rightWrap .page_top{padding-top:80px; margin-bottom:20px; clear:both}
+	#rightWrap .page_top h1{border:1px solid #a0a0a0; min-width:820px; line-height:30px; padding:15px; color:#222; font-size:30px; font-weight:900; border-radius:5px; box-shadow:0 5px 0px rgba(0, 0, 0, .1);}
+	/* page title 끝 */
+
+	/* search block 시작 */
+	.search_area{border:1px solid #a0a0a0; min-width:820px; line-height:30px; padding:15px; color:#222; font-size:15px; font-weight:400; background-color:#f5f5f5; border-radius:5px; box-shadow:0 5px 0px rgba(0, 0, 0, .1);}
+		.search_area dl{width:100%; clear:both}
+		.search_area dl dt, .search_area dl dd{display:inline-block;*display:inline; vertical-align:middle;zoom:1;}
+		.search_area dl dt{color:#222; font-weight:600; padding-right:10px}
+		.search_area dl dd{color:#999; font-weight:300; padding-right:20px}
+	/* search block 끝 */
+	
+	.boardWrap{width:96%;min-width:820px; position:relative; margin-top:20px;border-radius:5px; box-shadow:0 5px 0px rgba(0, 0, 0, .1); padding:1% 2% 2% 2%;border:1px solid #a0a0a0;}
+		.base_tbl{width:100%;border-collapse:collapse;}
+		.base_tbl tr th{border-bottom:2px solid #676767}
+		.base_tbl tr td{border-bottom:1px solid #dadada}
+		.base_tbl tr td a{color:#222; font-size:20px; font-weight:700; text-decoration:none}
+		.base_tbl tr td a:hover{text-decoration:underline}
+		.base_tbl tr th, .base_tbl tr td{font-family: 'Noto Sans KR', sans-serif; font-size:15px; padding:15px; text-align:center}
+		
+	/* page number */
+	#paging{clear:both;width:100%;height:35px;margin:15px 0;padding-top:10px; text-align:center}
+	#paging span a{display:inline-block;width:50px;height:30px;margin-right:4px;border:1px solid #d9d4d4;background:#fff;font-family:Verdana,sans-serif;font-weight:normal;line-height:29px;font-size:10px;color:#444;text-decoration:none}
+	#paging span a:hover{border:1px solid #267eb1;background-color:#379dd8;color:#fff}
+	#paging .Present a{border:1px solid #267eb1;background-color:#379dd8;color:#fff}
+	#paging .dubble a{width:70px}
+	#paging .numPN{display:inline-block;height:30px;vertical-align:middle}
+	#paging .numPN a{padding:0 10px;font-size:10px}
+	#paging .over a{padding:0 10px;font-size:10px}
+	#paging .left a{margin-right:20px}
+	#paging .right a{margin-left:20px}
+	
+/* right 시작 */
+
+
+#leftWrap.off{left:-190px}
+#rightWrap.off{margin-left:10px}
+
+
+.loginWrap{background-color:#299ae1}
+
+#login {width:410px; padding:20px 45px 20px 45px; background-color:#fff; box-shadow:0 5px 0px rgba(0, 0, 0, .1); border-radius:10px; position:absolute; top:30%; left:50%; margin-left:-250px;}
+#login h1{width:100%; line-height:50px; margin-bottom:20px; font-size:30px; color:#222; text-align:center; font-weight:800}
+#login dl{width:100%; clear:both}
+#login dl dt{display:none}
+#login dl dd{width:100%; margin-bottom:10px;}
+#login dl dd input{width:390px; height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px}
+
+#join{width:410px; padding:20px 45px 20px 45px; background-color:#fff; box-shadow:0 5px 0px rgba(0, 0, 0, .1); border-radius:10px; position:absolute; top:20%; left:50%; margin-left:-250px;}
+#join h1{width:100%; line-height:50px; margin-bottom:20px; font-size:30px; color:#222; text-align:center; font-weight:800}
+#join h2{width:98%; width: 394px; height: 40px; padding: 0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px; padding-left:5px; line-height:50px; margin-bottom:5px; font-size:20px; color:#222; font-weight:500}
+#join dl{width:100%; clear:both}
+#join dl dt{display:none}
+#join dl dd{width:100%; margin-bottom:10px;}
+#join dl dd input{width:390px; height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px}
+#myupdate dl dd input{width:390px; height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px; margin: 3px}
+#myupdate dl dd p{width:390px; height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px; margin: 3px}
+
+a.loginBtn, a.joinBtn{width:408px; height:40px; line-height:40px; margin-bottom:10px; text-decoration:none; font-size:20px; text-align:center; border-radius:5px; display:block; box-shadow:0 5px 0px rgba(0, 0, 0, .1);}
+a.loginBtn{background-color:#534f4f;border:1px solid #DDDDDD; color:#fff; width: 49%; display: inline-block;}
+a.joinBtn{background-color:#e6ebee;border:1px solid #65696b; color:#333; width: 49%; display: inline-block;}
+
+a.checkId{width:408px; height:39px; line-height:39px; text-decoration:none; font-size:14px; text-align:center; border-radius:5px; display:block; box-shadow:0 5px 0px rgba(0, 0, 0, .1);}
+a.checkId{background-color:#534f4f;border:1px solid #DDDDDD; color:#fff; width: 23%; display: inline-block;}
+.t_color{color:#222}
+
+.btnSet{width:100%; padding:20px 0 20px 0; clear:both; text-align:right}
+.btnBase{padding:15px; color:#222; font-weight:700; border:1px solid #929292; text-decoration:none; font-size:16px; border-radius:15px}
+.btnBase:hover{background-color:#299ae1;border:1px solid #1375b3; color:#fff;}
+
+.tbl_write input{width:100%; height:40px; line-height:40px;}
+.tbl_write textarea{width:100%; height:120px; line-height:20px;}
+
+
+.replyWrap{border:1px solid #D1D1D1; clear:both; padding:20px}
+.replyWrap dl{border:1px solid #D1D1D1; clear:both; padding:20px}
+.replyWrap dl dt{display:none}
+.replyWrap dl dd{padding:10px 0 10px 0; clear:both}
+.replyWrap dl dd input, .replyWrap dl dd textarea{width:100%}
+.replyWrap dl dd input{height:40px; line-height:40px;}
+.replyWrap dl dd textarea{height:150px}
+
+.replyList{width:100%;min-width:820px; position:relative; margin-top:20px;border-top:1px solid #a0a0a0;}
+.replyList tr th, .replyList tr td{padding:15px; border-bottom:1px solid #DBDBDB}
+.replyList .name{width:10%; text-align:left; color:#000}
+.replyList .date{width:10%; text-align:right}
+
+.btnS{padding:3px; padding-left:10px; padding-right:10px; color:#222; font-weight:700; border:1px solid #929292; vertical-align:middle; text-decoration:none; font-size:12px; border-radius:12px}
+.btnS:hover{background-color:#299ae1;border:1px solid #1375b3; color:#fff;}

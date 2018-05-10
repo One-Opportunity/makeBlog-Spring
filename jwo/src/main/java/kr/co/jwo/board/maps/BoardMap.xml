@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardMap">
+
+<select id="selectList" resultType="kr.co.jwo.board.dto.BoardMapDTO" >
+	SELECT *
+	FROM TB_BOARD_MAP
+	WHERE DEL_YN = 'N'
+	ORDER BY MAP_ID
+</select>
+
+<select id="selectOne" parameterType="int" resultType="kr.co.jwo.board.dto.BoardMapDTO">
+	SELECT * FROM TB_BOARD_MAP
+	WHERE MAP_ID = #{mapId}
+	
+</select>
+</mapper>

@@ -1,0 +1,71 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+ <global-method-security secured-annotations="enabled" 
+ 	pre-post-annotations="enabled">
+  <expression-handler ref="methodSecurityExpressionHandler"/>
+ </global-method-security>
+
+<!-- security="none" : security를 거치지 않고 경로 접속-->
+ <http pattern="/res/**" security="none"/>
+ 
+ <http auto-config="true" use-expressions="true" >
+ 
+<!--  
+	access permitAll		: 모두 허가하겠다
+	hasRole('ROLE_USER')	: 'ROLE_USER'이 있어야 허가 
+-->
+  <intercept-url pattern="/check/*" access="permitAll"/>
+  <intercept-url pattern="/login.god" access="permitAll"/>
+  <intercept-url pattern="/join.god" access="permitAll"/>
+  <intercept-url pattern="/find.god" access="permitAll"/>
+  <intercept-url pattern="/captcha/*" access="permitAll"/>
+  <intercept-url pattern="/security/login" access="permitAll"/>
+  <intercept-url pattern="/board/map/*" access="permitAll"/>
+  <intercept-url pattern="/board/doc/*" access="permitAll"/>
+  <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+ 
+<!--  	
+	form-login login-page 		: login 페이지 이동하는 url
+	default-target-url 			: 로그인 성공했을 때 보내지는 url
+  	login-processing-url  		: login 페이지 form의 action과 같아야함 
+  	authentication-failure-url	: 로그인 실패했을 때 보내지는 url
+  	username-parameter 			: login 페이지 로그인 아이디입력 input name과 같아야함  
+  	password-parameter 			: login 페이지 로그인 비번입력 input name과 같아야함  
+  -->
+  <form-login login-page="/login.god" 
+	   default-target-url="/main/index.god"
+	   login-processing-url="/security/login" 
+	   always-use-default-target="true" 
+	   authentication-failure-url="/login.god?error=1"
+	   username-parameter="loginId" 
+	   password-parameter="loginPw"
+	   authentication-success-handler-ref="authenticationSuccess"
+   />
+   <!-- 
+   	max-sessions 				: 값이 1일 경우 1명만 접속 2일경우 2명까지 접속 가능 
+   	error-if-maximum-exceeded 	: 맥시멈 넘어가면 error로 볼 것인가 아닌가를 결정
+   	logout-url					: 로그아웃 할 때 이동되는 url
+   	logout-success-url			: 로그아웃이 성공하게 되면 이동되는 url
+   -->
+  <session-management>
+   <concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>
+  </session-management>
+  <logout logout-success-url="/login.god" logout-url="/logout.god"/>
+ </http>
+ 
+ <!-- bean 등록 -->
+ <beans:bean id="authenticationSuccess" class="kr.co.jwo.common.security.AuthenticationSuccess"></beans:bean>
+ <beans:bean id="userDetailService" class="kr.co.jwo.common.security.UserDetailService"/>
+
+ <!-- 나중에 설명 -->
+ <authentication-manager alias="authenticationManager">
+  <authentication-provider user-service-ref="userDetailService">
+   <password-encoder hash="plaintext" base64="true"/>
+  </authentication-provider>
+ </authentication-manager>
+
+</beans:beans>

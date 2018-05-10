@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PopupImg">
+
+	<select id="selectList" parameterType="Integer" resultType="kr.co.jwo.popup.dto.PopupImgDTO">
+		SELECT *
+		FROM TB_POPUP_IMG
+		WHERE POP_ID = #{popId}
+		
+	
+	</select>
+	
+	<insert id="insert" parameterType="kr.co.jwo.popup.dto.PopupImgDTO">
+
+		  INSERT INTO TB_POPUP_IMG(
+		  POP_IMG_ID
+		  ,POP_ID
+		  ,ORG_IMG_NAME
+		  ,NEW_IMG_NAME
+		  ,IMG_TYPE
+		  ,IMG_SIZE
+		  ,IMG_PATH
+		  ,IMG_EXT
+		  ,REG_DT
+		  )VALUES(
+		  (SELECT NVL(COUNT(*),0)+1 FROM TB_POPUP_IMG WHERE POP_IMG_ID=#{popImgId})
+		  ,#{popId}
+		  ,#{orgImgName}
+		  ,#{newImgName}
+		  ,#{imgType}
+		  ,#{imgSize}
+		  ,#{imgPath}
+		  ,#{imgExt}
+		  ,SYSDATE
+		  )
+	</insert>
+ 
+    <delete id="delete" parameterType="Integer">
+       DELETE FROM TB_POPUP_IMG 
+       WHERE POP_ID= #{popId}
+    </delete>
+</mapper>
