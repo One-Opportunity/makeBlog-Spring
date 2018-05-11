@@ -9,5 +9,6 @@ public interface IBoardFileService {
 	public List<BoardFileDTO> list(Integer docId);
 	public void write(BoardFileDTO fileDTO);
 	public void remove(Integer docId);
+	public void removeByFileSno(Integer fileSno);
 	public BoardFileDTO view(BoardFileDTO fileDTO);
 }

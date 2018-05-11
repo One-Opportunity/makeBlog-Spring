@@ -3,14 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
  <script>
 
- var dialog
+ var dialog;
 
  $(function() {
 	 dialog = $( ".dialog-form" ).dialog({
 	       autoOpen: false,
 	       height: 700,
-	       width: 650,
-	       modal: true,
+	       width: 900,
+	       modal: false,
 	       close: function() {
 	       }, 
 	       position:[100,200]
@@ -34,7 +34,7 @@
  <div class="dialog-form" title="${popupDTO.popTitle}" >
   
      <c:forEach items="${popupDTO.fileList}" var="file">
-       <img src="${_ctx}/${file.imgPath}/${file.newImgName}.${file.imgExt}" />
+       <img src="${_ctx}/${file.imgPath}/${file.newImgName}.${file.imgExt}" style="width:850px"/><br/>
 
        </c:forEach>
  </div>

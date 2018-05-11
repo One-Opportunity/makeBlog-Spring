@@ -83,7 +83,33 @@ public class PopupServiceImpl implements IPopupService{
 	}
 
 	@Override
-	public void edit(PopupDTO popupDTO) {
+	public void edit(PopupDTO popupDTO, HttpSession session) {
+		
+		// 1. 첨부파일 등록
+		PopupImgDTO popupImgDTO = null;
+		if(popupDTO.getFiles() != null) {
+			for (MultipartFile file : popupDTO.getFiles()) {
+				log.debug("====@@@@@@@@@@@@@@  name  @@@@@@@@@@@@@@@@@@@@@@@@ =====>>" + file.getOriginalFilename());
+				log.debug("====@@@@@@@@@@@@@@  name  @@@@@@@@@@@@@@@@@@@@@@@@ =====>>" + file.getSize());
+
+				// 2. 첨부파일 물리적인 디스크에 저장
+				popupImgDTO = fileService.uploadSingleImg(file, session);
+
+				// 3. c첨부파일 DB에
+				popupImgDTO.setPopId(popupDTO.getPopId());
+				popupImgService.write(popupImgDTO);
+			}
+		}
+		
+		// 2. 첨부파일 삭제
+		log.debug("popupDTO의 sno : " +popupDTO);
+		if(popupDTO.getDelFiles() != null) {
+			for (Integer sno : popupDTO.getDelFiles()) {
+				popupImgService.remove(sno);
+				log.debug("sno 왜 안뜸? 이해가 안됨: " + sno);
+			}
+		}
+		
 		popupDAO.update(popupDTO);
 	}
 	

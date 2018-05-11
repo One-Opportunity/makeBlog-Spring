@@ -8,5 +8,7 @@ public interface IBoardFileDAO {
 	public List<BoardFileDTO> selectList(Integer docId);
 	public void insert(BoardFileDTO fileDTO);
 	public void delete(Integer docId);
+	public void deleteByFileSno(Integer fileSno);
+	
 	public BoardFileDTO selectOne(BoardFileDTO fileDTO);
 }

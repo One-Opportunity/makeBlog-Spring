@@ -23,7 +23,7 @@
 		  ,IMG_EXT
 		  ,REG_DT
 		  )VALUES(
-		  (SELECT NVL(COUNT(*),0)+1 FROM TB_POPUP_IMG WHERE POP_IMG_ID=#{popImgId})
+		  (SELECT NVL(COUNT(*),0)+1 FROM TB_POPUP_IMG WHERE POP_ID=#{popId})
 		  ,#{popId}
 		  ,#{orgImgName}
 		  ,#{newImgName}
@@ -37,6 +37,6 @@
  
     <delete id="delete" parameterType="Integer">
        DELETE FROM TB_POPUP_IMG 
-       WHERE POP_ID= #{popId}
+       WHERE POP_IMG_ID= #{popImgId}
     </delete>
 </mapper>

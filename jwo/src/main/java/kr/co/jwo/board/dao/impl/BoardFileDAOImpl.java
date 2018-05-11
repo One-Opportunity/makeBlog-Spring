@@ -33,5 +33,10 @@ public class BoardFileDAOImpl extends BaseDaoSupport implements IBoardFileDAO{
 	public BoardFileDTO selectOne(BoardFileDTO fileDTO) {
 		return this.getSqlSession().selectOne("BoardFile.selectOne", fileDTO);
 	}
+
+	@Override
+	public void deleteByFileSno(Integer fileSno) {
+		this.getSqlSession().delete("BoardFile.deleteByFileSno", fileSno);
+	}
 	
 }

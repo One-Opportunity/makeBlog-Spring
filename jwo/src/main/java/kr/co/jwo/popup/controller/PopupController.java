@@ -69,8 +69,8 @@ public class PopupController {
 	}
 	
 	@RequestMapping(value = "/update.god", method = RequestMethod.POST)
-	public String doEdit(Model model, PopupDTO popupDTO) {
-		popupService.edit(popupDTO);
+	public String doEdit(Model model, PopupDTO popupDTO, HttpSession session) {
+		popupService.edit(popupDTO, session);
 		return "redirect:./view.god?popId=" + popupDTO.getPopId(); 
 	}
 }

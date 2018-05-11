@@ -89,7 +89,8 @@ public class BoardDocController {
 		log.debug("====@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=====>>" + userDTO);
 		log.debug("====@@@@@@@@@@@@@@@@@@@@@@@@@@@BoardDocController doWrite @@@@@@@@@@@@@@@@@@@@=====>>" + boardDocDTO);
 	
-
+	
+		
 		boardDocService.add(boardDocDTO, session);
 		
 		return "redirect:./view.god?docId=" + boardDocDTO.getDocId() + "&" + search.getParams();
@@ -158,7 +159,10 @@ public class BoardDocController {
 	public String doEdit(Model model, HttpSession session, BoardDocDTO boardDocDTO, @ModelAttribute("search") BoardSearchDTO search) {
 		UserDTO userDTO = (UserDTO) session.getAttribute("_user");
 		boardDocDTO.setUserId(userDTO.getUserId());
-		boardDocService.edit(boardDocDTO);
+		boardDocService.edit(boardDocDTO, session);
+		
+		
+
 		log.debug("====@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=====>>" + userDTO);
 		log.debug("====@@@@@@@@@@@@@@  boardDocDTO  @@@@@@@@@@@@@@@@@@@@@@@@ =====>>" + boardDocDTO);
 		return "redirect:./view.god?docId=" + boardDocDTO.getDocId() + "&" + search.getParams();

@@ -22,7 +22,9 @@
 								d.add(this.mapId, this.parMapId, this.mapName, "${_ctx}/board/doc/list.god?mapId=" + this.mapId);
 							}
 						});
+				if($("#role").val()== 'MANAGER' || $("#role").val() == 'ADMIN'){
 								d.add(100000, 1, "팝업관리", "${_ctx}/popup/doc/list.god");
+				}
 // 				console.log(d.toString());
 				$("#dtree").html(d.toString());
 			}
@@ -35,8 +37,10 @@
 
 <div id="leftWrap">
 
+<input type="hidden" id="role" value="${_user.role}"/>
 	<div id="infoWrap">
 		<div class="info_txt">
+		
 			<p class="info_name">${_user.loginId}</p>
 			<p class="info_name">${_user.name}</p>
 			<p class="info_date"><fmt:formatDate value="${_user.regDt}" pattern="yyyy.MM.dd HH시 mm분"/> </p>

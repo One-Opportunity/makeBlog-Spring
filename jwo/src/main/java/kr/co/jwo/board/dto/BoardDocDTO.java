@@ -28,6 +28,8 @@ public class BoardDocDTO extends UserDTO{
 	
 	private List<BoardFileDTO> fileList = null;	// 첨부파일
 	
+	private List<Integer> delFiles = null;		// 삭제할 첨부파일 sno
+	
 	private Date regDt = null;					// 등록일
 	
 	

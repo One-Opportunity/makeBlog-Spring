@@ -42,9 +42,9 @@
 							</tr>
 
 							<tr>
-								<td colspan="6" class="alignLeft">
+								<td colspan="10" rowspan="2" class="alignLeft">
 								<c:forEach items="${popupDTO.fileList}" var="item">
-								<img src="${_ctx}/${item.imgPath}/${item.newImgName}.${item.imgExt}" />
+								<img src="${_ctx}/${item.imgPath}/${item.newImgName}.${item.imgExt}" style="width: 900px" /> <br/>
 								</c:forEach>
 								</td>
 							</tr>

@@ -44,7 +44,6 @@
 		});
 	});
 
-	var cnt = 0;
 	function addFile() {
 		var appendingFileHtml = "<input type='file' name='files' style='width:90%' /> <img src=${_ctx}/res/images/del.jpg style='width:25px; cursor:pointer;' onclick='delFile(this)'/>";
 		var size = $("td#tdFile > input[type=file]").length;
@@ -95,7 +94,7 @@
 									<td><textarea name="boardContents" id="boardContents"  required="required"></textarea></td>
 								</tr>
 								<tr>
-									<th class="t_color">첨부파일 <a href="javascript:addFile();" style="padding: 5px;" id="btnFile" class="disPB btnBase">추가</a>
+									<th class="t_color">첨부파일 <a href="javascript:addFile();" style=" color:black; text-decoration:none; padding: 5px; border-radius: 20px; border:1px solid black;" id="btnFile">추가</a>
 									</th>
 									<td id="tdFile"></td>
 

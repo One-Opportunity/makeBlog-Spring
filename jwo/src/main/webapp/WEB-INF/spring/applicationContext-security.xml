@@ -24,9 +24,9 @@
   <intercept-url pattern="/find.god" access="permitAll"/>
   <intercept-url pattern="/captcha/*" access="permitAll"/>
   <intercept-url pattern="/security/login" access="permitAll"/>
-  <intercept-url pattern="/board/map/*" access="permitAll"/>
-  <intercept-url pattern="/board/doc/*" access="permitAll"/>
-  <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+  <intercept-url pattern="/board/*" access="permitAll"/>
+  <intercept-url pattern="/popup/*" access="permitAll"/>
+  <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_MANAGER')"/>
  
 <!--  	
 	form-login login-page 		: login 페이지 이동하는 url

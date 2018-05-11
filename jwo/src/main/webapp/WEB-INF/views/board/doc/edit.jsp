@@ -31,9 +31,22 @@ $(document).ready(function(){
 	    fCreator: "createSEditor2"
 
 	});
-	
 });
+function addFile() {
+	var appendingFileHtml = "<input type='file' name='files' style='width:90%' /> <img src=${_ctx}/res/images/del.jpg style='width:25px; cursor:pointer;' onclick='delFile(this)'/>";
+	var size = $("#tdFile > input[type=file]").length;
+	if (size < 5) {
+		$("#tdFile").append(appendingFileHtml);
+	} else {
+		alert("더 이상 추가할 수 없어요~~~");
+	}
 
+}
+function delFile(file) {
+	console.log(file);
+	$(file).prev().remove();
+	$(file).remove();
+}
 </script>
 </head>
 
@@ -53,7 +66,7 @@ $(document).ready(function(){
 				<div class="boardWrap">
 
 
-					<form id="frmEdit" name="frmEidt" action="${_ctx}/board/doc/edit.god" method="post">
+					<form id="frmEdit" name="frmEidt" action="${_ctx}/board/doc/edit.god" method="post" enctype="multipart/form-data">
 
 						<input type="hidden" name="mapId" id="mapId" value="${search.mapId}"></input> <input type="hidden" name="docId" id="docId" value="${docId}"></input>
 						<table class="base_tbl tbl_write">
@@ -66,6 +79,22 @@ $(document).ready(function(){
 									<th class="t_color">내용입력</th>
 									<td><textarea name="boardContents" id="boardContents">${docDTO.boardContents}</textarea></td>
 								</tr>
+								<tr>
+									<th class="t_color">첨부파일 <a href="javascript:addFile();" style="color:black; text-decoration:none; padding: 5px; border-radius: 20px; border:1px solid black;" id="btnFile">추가</a>
+									</th>
+									<td id="tdFile"></td>
+								</tr>
+
+							<c:forEach items="${docDTO.fileList}" var="file">
+								<tr>
+									<th class="t_color">첨부파일 삭제</th>
+
+									<td>
+									<input type="checkbox" name="delFiles" value="${file.fileSno}" style="display: inline-block; width:15px;height:15px;" />${file.orgFileName}
+									</td>
+
+								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 

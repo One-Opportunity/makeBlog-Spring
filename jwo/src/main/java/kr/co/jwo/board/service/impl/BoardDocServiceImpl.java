@@ -58,8 +58,41 @@ public class BoardDocServiceImpl implements IBoardDocService {
 
 	}
 
+	
+	/**
+	 * 수정
+	 */
 	@Override
-	public void edit(BoardDocDTO documentDTO) {
+	@Transactional
+	public void edit(BoardDocDTO documentDTO, HttpSession session) {
+		
+		// 1. 첨부파일 등록
+		BoardFileDTO boardFileDTO = null;
+		if(documentDTO.getFiles() != null) {
+			for (MultipartFile file : documentDTO.getFiles()) {
+				log.debug("====@@@@@@@@@@@@@@  name  @@@@@@@@@@@@@@@@@@@@@@@@ =====>>" + file.getOriginalFilename());
+				log.debug("====@@@@@@@@@@@@@@  name  @@@@@@@@@@@@@@@@@@@@@@@@ =====>>" + file.getSize());
+
+				// 2. 첨부파일 물리적인 디스크에 저장
+				boardFileDTO = fileService.uploadSingleFile(file, session);
+
+				// 3. c첨부파일 DB에
+				boardFileDTO.setDocId(documentDTO.getDocId());
+				boardFileServiceImpl.write(boardFileDTO);
+			}
+		}
+		
+		// 2. 첨부파일 삭제
+		if(documentDTO.getDelFiles() != null) {
+			for (Integer sno : documentDTO.getDelFiles()) {
+				boardFileServiceImpl.removeByFileSno(sno);
+				log.debug("sno 왜 안뜸? 이해가 안됨: " + sno);
+			}
+		}
+		
+		
+		
+		// 3. 수정
 		documentDAO.update(documentDTO);
 	}
 

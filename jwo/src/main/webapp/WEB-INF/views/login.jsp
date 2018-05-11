@@ -7,6 +7,7 @@
 
 <script>
 	$(function() {
+		$("#header ul li").children().eq(0).addClass("on");
 		
 		$("input").focus(function() {
 			$(this).css("background-color", "#DDDDDD");

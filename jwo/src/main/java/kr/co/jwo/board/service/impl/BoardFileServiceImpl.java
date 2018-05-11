@@ -36,6 +36,11 @@ public class BoardFileServiceImpl implements IBoardFileService {
 		return fileDAO.selectOne(fileDTO);
 	}
 
+	@Override
+	public void removeByFileSno(Integer fileSno) {
+		fileDAO.deleteByFileSno(fileSno);
+	}
+
 
 
 

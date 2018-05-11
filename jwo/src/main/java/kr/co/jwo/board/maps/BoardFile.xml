@@ -37,7 +37,10 @@
 		DELETE FROM TB_BOARD_FILE
 		WHERE DOC_ID = #{docId}
 	</delete>
-
+	<delete id="deleteByFileSno" parameterType="Integer">
+		DELETE FROM TB_BOARD_FILE
+		WHERE File_SNO = #{fileSno}
+	</delete>
 	<select id="selectOne" parameterType="kr.co.jwo.board.dto.BoardFileDTO" resultType="kr.co.jwo.board.dto.BoardFileDTO">
 		SELECT
 		*

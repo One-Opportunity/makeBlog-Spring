@@ -25,4 +25,6 @@ public class PopupDTO {
 	
 	private List<PopupImgDTO> fileList = null;	// 첨부파일
 
+	private List<Integer> delFiles = null;		// 삭제할 첨부파일 sno
+
 }

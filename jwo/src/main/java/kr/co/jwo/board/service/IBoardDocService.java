@@ -9,8 +9,10 @@ import kr.co.jwo.board.dto.BoardSearchDTO;
 
 public interface IBoardDocService {
 	public void add(BoardDocDTO documentDTO, HttpSession session);
-	public void edit(BoardDocDTO documentDTO);
+	public void edit(BoardDocDTO documentDTO, HttpSession session);
 	public void remove(int docId);
+
+	
 	public void editByCntRead(int docId);
 	public BoardDocDTO view(int docId);
 	public List<BoardDocDTO> listDoc(BoardSearchDTO boardSearchDTO);

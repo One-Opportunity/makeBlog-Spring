@@ -57,15 +57,15 @@ function delFile(file) {
 									<td><input type="text" id="title" name="popTitle" required="required" /></td>
 								</tr>
 								<tr>
+									<th width="8%" class="t_color">활성화여부</th>
+									<td>YES <input type="radio" name="popupYn" value="Y" style="width:15px;height:15px;border:1px;"/> &nbsp;&nbsp;&nbsp;&nbsp;
+NO <input type="radio" name="popupYn" value="N" style="width:15px;height:15px;border:1px;"/></td>
+								</tr>
+								<tr>
 									<th class="t_color">이미지 등록 <a href="javascript:addFile();" style="padding: 5px;" id="btnFile" class="disPB btnBase">추가</a>
 									</th>
 									<td id="tdFile"></td>
 
-								</tr>
-								<tr>
-									<th width="8%" class="t_color">활성화여부</th>
-									<td>YES <input type="radio" name="popupYn" value="Y" style="width:15px;height:15px;border:1px;"/> &nbsp;&nbsp;&nbsp;&nbsp;
-NO <input type="radio" name="popupYn" value="N" style="width:15px;height:15px;border:1px;"/></td>
 								</tr>
 							</tbody>
 						</table>

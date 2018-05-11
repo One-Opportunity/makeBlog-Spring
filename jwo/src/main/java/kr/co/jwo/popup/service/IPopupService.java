@@ -13,5 +13,5 @@ public interface IPopupService {
 	public PopupDTO view(Integer popId);
 	public void remove(Integer popId);
 	
-	public void edit(PopupDTO popupDTO);
+	public void edit(PopupDTO popupDTO, HttpSession session);
 }
