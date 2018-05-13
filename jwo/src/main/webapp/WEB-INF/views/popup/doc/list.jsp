@@ -76,7 +76,6 @@
 									</td>
 									<td>${item.popupYn}</td>
 									<td><fmt:formatDate value="${item.regDt}" pattern="yyyy.MM.dd. HH시 mm분 " /></td>
-									
 								</tr>
 							</c:forEach>
 						</tbody>

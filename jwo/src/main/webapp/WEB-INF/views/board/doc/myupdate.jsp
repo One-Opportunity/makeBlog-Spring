@@ -7,6 +7,67 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <c:import url="/WEB-INF/views/inc/head.jsp" />
+<style>
+#stylized{
+	border:solid 2px #b7ddf2;
+	background:#ebf4fb;
+}
+#stylized h1 {
+	font-size:16px;
+	font-weight:bold;
+	margin-bottom:8px;
+	font-family:nanumgothic,dotum;
+
+}
+#stylized p{
+	font-size:11px;
+	color:#666666;
+	margin-bottom:20px;
+	border-bottom:solid 1px #b7ddf2;
+	padding-bottom:10px;
+	font-family:dotum;
+}
+#stylized label{
+	display:block;
+	font-weight:bold;
+	text-align:right;
+	width:140px;
+	float:left;
+	font-family:tahoma;
+}
+#stylized .small{
+	color:#666666;
+	display:block;
+	font-size:11px;
+	font-weight:normal;
+	text-align:right;
+	width:140px;
+	font-family:dotum;
+	letter-spacing:-1px;
+}
+#stylized input{
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #aacfe4;
+width:200px;
+margin:2px 0 20px 10px;
+}
+#stylized button{
+clear:both;
+margin-left:150px;
+width:125px;
+height:31px;
+text-align:center;
+line-height:31px;
+background-color:#000;
+color:#FFFFFF;
+font-size:11px;
+font-weight:bold;
+font-family:tahoma;
+}
+</style>
+</style>
 <script>
 	$(document).ready(function() {
 		$("#header ul li").children().eq(3).addClass("on");
@@ -67,38 +128,24 @@
 			<div class="rightBlock">
 				<div class="page_top">
 					<h1>나의 정보 수정</h1>
+					
 				</div>
 			</div>
-		</div>
-
-		<div id="join" style=" left:50%; padding:200px; border: 1px solid #DFDFDF">
-			
-			<form id="frmMyUpdate" name="frmMyUpdate">
+			<div id="stylized" class="myform"style="width: 70%;">
+				<form id="frmMyUpdate" name="frmMyUpdate">
 					<input type="hidden" id="userId" name="userId" value="${userDTO.userId}"></input>
-				<dl>
-					<dd style="margin-bottom: 10px;">
 						<input type="text" id="loginId" name="loginId" value="${userDTO.loginId}" readonly/>
 						
-					</dd>
-					<dd>
 						<input type="password" id="loginPw" name="loginPw" placeholder="수정할 비밀번호를 입력하시오" maxlength="15" minlength="8" required />
-					</dd>
-					<dd>
 						<input type="password" name="reLoginPw" placeholder="수정할 비밀번호를 다시 입력하시오" maxlength="15" minlength="8" equalTo="#loginPw" required />
-					</dd>
-					<dd>
 						<input type="text" id="name" name="name" placeholder="${userDTO.name}" value="${userDTO.name}" maxlength="30" required />
-					</dd>
-					<dd>
 						<input type="text" id="phone" name="phone" placeholder="${userDTO.phone}" value="${userDTO.phone}" alt="mobile" maxlength="13" required /> 
-					</dd>
-					<dd>
 						<input type="email" id="email" name="email" placeholder="${userDTO.email}" value="${userDTO.email}" maxlength="20"  required />
-					</dd>
-				</dl>
 				<input type="hidden" id="checkedPhone" value="N" /> <input type="hidden" id="checkedEmail" value="N" /> <a href="javascript:;" class="loginBtn"
 					id="btnSave">저장</a> <a href="${_ctx}/main/index.god" class="joinBtn">취소</a>
 			</form>
+			</div>
+		
 		</div>
 	</div>
 </body>

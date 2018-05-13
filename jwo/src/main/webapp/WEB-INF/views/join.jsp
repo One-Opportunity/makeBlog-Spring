@@ -161,17 +161,17 @@
 </script>
 </head>
 
-<body>
+<body style="overflow-y: hidden;">
 	<div id="loginWrap">
-		<div id="join">
+		<div id="join" class="login">
 			<h1>회원가입</h1>
 			<form id="frmJoin" name="frmJoin">
 				<input type="hidden" id="checkedId" value="N" />
 				<dl>
 					<dd>
 						<input type="text" id="loginId" name="loginId" placeholder="아이디"
-							maxlength="15" minlength="6" style="width: 70%;" required /> <a
-							href="javascript:;" id="btnCheckId" class="checkId">아이디체크</a>
+							maxlength="15" minlength="6" style="width: 60%;" required /> 
+							<a href="javascript:;" id="btnCheckId" class="btn btn-primary btn-block btn-large" style="width: 35%; display: inline-block; text-decoration:none;">중복확인</a>
 					</dd>
 					<dd>
 						<input type="password" id="loginPw" name="loginPw"
@@ -187,27 +187,27 @@
 					</dd>
 					<dd>
 						<input type="text" id="phone" name="phone" placeholder="핸드폰번호"
-							alt="mobile" maxlength="13" style="width: 70%;" required /> <a
-							href="javascript:;" id="btnCheckPhone" class="checkId">휴대폰체크</a>
+							alt="mobile" maxlength="13" style="width: 60%; text-decoration:none;" required /> <a
+							href="javascript:;" id="btnCheckPhone" class="btn btn-primary btn-block btn-large" style="width: 35%; display: inline-block; text-decoration:none;">중복확인</a>
 
 					</dd>
 					<dd>
 						<input type="email" id="email" name="email" placeholder="이메일"
-							maxlength="20" style="width: 70%;" required /> <a
-							href="javascript:;" id="btnCheckEmail" class="checkId">이메일체크</a>
+							maxlength="20" style="width: 60%;" required /> <a
+							href="javascript:;" id="btnCheckEmail" class="btn btn-primary btn-block btn-large" style="width: 35%; display: inline-block; text-decoration:none;">중복확인</a>
 
 					</dd>
 					<dd>
 						<img src="${_ctx}/captcha/index" id="imgCaptcha"
-							style="cursor: pointer" /> <input type="text" name="captcha"
-							id="captcha" placeholder="문자를 입력하세요" style="width: 230px;"
+							style="cursor: pointer; background-color: white; margin-left: 5px; border-radius: 10px; " /> 
+							<input type="text" name="captcha" id="captcha" placeholder="문자를 입력하세요" style="width: 44.2%;"
 							required />
 					</dd>
 				</dl>
 				<input type="hidden" id="checkedPhone" value="N" /> <input
-					type="hidden" id="checkedEmail" value="N" /> <a
-					href="javascript:;" class="loginBtn" id="btnSave">저장</a> <a
-					href="${_ctx}/index.god" class="joinBtn">취소</a>
+					type="hidden" id="checkedEmail" value="N" /> 
+					<a href="javascript:;"class="btn btn-primary btn-block btn-large" style=" text-decoration:none; width: 48.4%; display: inline-block;" id="btnSave">저장</a> 
+					<a href="${_ctx}/index.god" class="btn btn-primary btn-block btn-large" style="text-decoration:none; width: 48.4%; display: inline-block;">취소</a>
 			</form>
 		</div>
 	</div>

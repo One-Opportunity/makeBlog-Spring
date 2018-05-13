@@ -168,7 +168,7 @@ public class FileService {
 			
 			fileInfo.setOrgFileName(orgFileName);
 			fileInfo.setNewFileName(newFileName);
-			fileInfo.setFilePath(path);
+			fileInfo.setFilePath(uriPath);
 			
 			// 파일 타입
 			fileInfo.setFileType(multipartFile.getContentType());
@@ -184,7 +184,7 @@ public class FileService {
 			// Multipart 처리
 			try{
 				//서버에 파일 저장 (쓰기)
-				multipartFile.transferTo(new File(path + File.separator + newFileName));
+				multipartFile.transferTo(new File(path + File.separator + newFileName + "." + fileInfo.getFileExt()));
 				logger.debug("file name ====>"+path + File.separator+ newFileName);
 			}catch(Exception e){
 //				fileInfo.setErrorCode(-1);
@@ -205,7 +205,7 @@ public class FileService {
 			out = response.getOutputStream();
 
 			// httpSession.getServletContext().getRealPath("/")
-			File file = new File(fileDTO.getFilePath() + "/" +  fileDTO.getNewFileName() );
+			File file = new File(httpSession.getServletContext().getRealPath("/") + fileDTO.getFilePath() + "/" +  fileDTO.getNewFileName() );
 			log.debug("경로찍어봅시다~!!!!!!!!!!!!!!!!!1" + httpSession.getServletContext().getRealPath("/")+fileDTO.getFilePath() + "/" +  fileDTO.getNewFileName());
 			
 			if( !file.exists() ) {

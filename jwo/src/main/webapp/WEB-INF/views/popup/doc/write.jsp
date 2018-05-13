@@ -15,7 +15,7 @@ $(function() {
 });
 
 function addFile() {
-	var appendingFileHtml = "<input type='file' name='files' style='width:90%' /> <img src=${_ctx}/res/images/del.jpg style='width:25px; cursor:pointer;' onclick='delFile(this)'/>";
+	var appendingFileHtml = "<input type='file' name='files' style='width:90%' accept='image/gif, image/jpeg, image/png'/> <img src=${_ctx}/res/images/del.jpg style='width:25px; cursor:pointer;' onclick='delFile(this)'/>";
 	var size = $("td#tdFile > input[type=file]").length;
 	if (size < 5) {
 		$("#tdFile").append(appendingFileHtml);
@@ -59,7 +59,7 @@ function delFile(file) {
 								<tr>
 									<th width="8%" class="t_color">활성화여부</th>
 									<td>YES <input type="radio" name="popupYn" value="Y" style="width:15px;height:15px;border:1px;"/> &nbsp;&nbsp;&nbsp;&nbsp;
-NO <input type="radio" name="popupYn" value="N" style="width:15px;height:15px;border:1px;"/></td>
+										NO <input type="radio" name="popupYn" value="N" style="width:15px;height:15px;border:1px;"/></td>
 								</tr>
 								<tr>
 									<th class="t_color">이미지 등록 <a href="javascript:addFile();" style="padding: 5px;" id="btnFile" class="disPB btnBase">추가</a>

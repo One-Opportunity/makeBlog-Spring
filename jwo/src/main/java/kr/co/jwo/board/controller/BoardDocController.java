@@ -172,7 +172,7 @@ public class BoardDocController {
 	@RequestMapping(value = "/myupdate.god", method = RequestMethod.GET)
 	public void goMyUpdate(Model model, HttpSession session) {
 		UserDTO userDTO = (UserDTO) session.getAttribute("_user");
-		
+		log.debug("myUpdate에서 userDTO 뽑기 : " + userDTO);
 		model.addAttribute("userDTO", userDTO);
 	}
 

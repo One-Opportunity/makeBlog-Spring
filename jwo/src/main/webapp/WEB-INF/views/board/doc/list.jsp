@@ -7,42 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <c:import url="/WEB-INF/views/inc/head.jsp" />
-<style>
-.d7:after {content:""; clear:both; display:table}
-.d7 form {
-  width: auto;
-  float: right;
-  margin-right: 30px;
-}
-.d7 input {
-  width: 150px;
-  height: 30px;
-  padding-left: 15px;
-  border-radius: 42px;
-  border: 1px solid #324b4e;
-  background: #F9F0DA;
-  outline: none;
-  position: relative;
-  transition: .3s linear;
-}
-.d7 input:focus {
-  width: 200px;
-}
-.d7 button {
-  width: 42px;
-  height: 42px;
-  background: none;
-  border: none;
-  position: absolute;
-  top: -2px;
-  right: 0;
-}
-.d7 button:before{
-  content: "\f002";
-  font-family: FontAwesome;
-  color: #324b4e;
-}
-</style>
+
 <script>
 	$(function() {
 		
@@ -111,18 +76,19 @@
 						<dd>
 						<div class="d7">
 							<form>
-							  <input type="text" name="searchText" placeholder="검색어 입력" value="${search.searchText}">
+							  <input type="text" name="searchText" placeholder="검색어 입력" value="${search.searchText}" />
 <%-- 							<input type="text" name="searchText" placeholder="검색어" style="height: 20px;" value="${search.searchText}"/> --%>
 							</form>
+						</div>
 						</dd>
 						<dd>
 						<div>
 							<a href="javascript:goPage('1');" class="disPB btnBase" style="padding: 5px">검색</a>
 						</div>
 						</dd>
-						</div>
 					</dl>
 				</form>
+						</div>
 				<!-- 검색 끝 -->
 
 				<div class="boardWrap">

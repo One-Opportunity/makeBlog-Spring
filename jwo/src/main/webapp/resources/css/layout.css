@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* root */
-html,body{width:100%;height:100%;margin:0;padding:0; background-color:#666666}
+html,body{width:100%;height:100%;margin:0;padding:0; background-color:#666666; overflow-y: scroll;}
 #wrap{height:auto; width:100%; position:relative; display:inline-block;*display:inline; vertical-align:top;zoom:1}
 #loginWrap{width:100%;; height:100%; position:relative; clear:both}
 
@@ -69,7 +69,7 @@ html,body{width:100%;height:100%;margin:0;padding:0; background-color:#666666}
 		.search_area dl dd{color:#999; font-weight:300; padding-right:20px}
 	/* search block 끝 */
 	
-	.boardWrap{width:96%;min-width:820px; position:relative; margin-top:20px;border-radius:5px; box-shadow:0 5px 0px rgba(0, 0, 0, .1); padding:1% 2% 2% 2%;border:1px solid #a0a0a0;}
+	.boardWrap{ width:96%;min-width:820px; position:relative; margin-top:20px;border-radius:5px; box-shadow:0 5px 0px rgba(0, 0, 0, .1); padding:1% 2% 2% 2%;border:1px solid #a0a0a0;}
 		.base_tbl{width:100%;border-collapse:collapse;}
 		.base_tbl tr th{border-bottom:2px solid #676767}
 		.base_tbl tr td{border-bottom:1px solid #dadada}
@@ -96,22 +96,22 @@ html,body{width:100%;height:100%;margin:0;padding:0; background-color:#666666}
 #rightWrap.off{margin-left:10px}
 
 
-.loginWrap{background-color:#299ae1}
+/* .loginWrap{background-color:#299ae1} */
 
-#login {width:410px; padding:20px 45px 20px 45px; background-color:#fff; box-shadow:0 5px 0px rgba(0, 0, 0, .1); border-radius:10px; position:absolute; top:30%; left:50%; margin-left:-250px;}
-#login h1{width:100%; line-height:50px; margin-bottom:20px; font-size:30px; color:#222; text-align:center; font-weight:800}
+/* #login { padding:20px 45px 20px 45px; background-color:#fff; box-shadow:0 5px 0px rgba(0, 0, 0, .1); border-radius:10px; position:absolute;margin-left:-150px;} */
+#login h1{width:100%; line-height:50px; margin-bottom:20px; font-size:30px; color:white; text-align:center; font-weight:800}
 #login dl{width:100%; clear:both}
 #login dl dt{display:none}
 #login dl dd{width:100%; margin-bottom:10px;}
-#login dl dd input{width:390px; height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px}
+#login dl dd input{ height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px; margin-bottom: 10px;}
 
-#join{width:410px; padding:20px 45px 20px 45px; background-color:#fff; box-shadow:0 5px 0px rgba(0, 0, 0, .1); border-radius:10px; position:absolute; top:20%; left:50%; margin-left:-250px;}
-#join h1{width:100%; line-height:50px; margin-bottom:20px; font-size:30px; color:#222; text-align:center; font-weight:800}
+/* #join{width:410px; padding:20px 45px 20px 45px; background-color:#fff; box-shadow:0 5px 0px rgba(0, 0, 0, .1); border-radius:10px; position:absolute; top:20%; left:50%; margin-left:-250px;} */
+#join h1{width:100%; color:white; line-height:50px; margin-bottom:20px; font-size:30px; text-align:center; font-weight:800}
 #join h2{width:98%; width: 394px; height: 40px; padding: 0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px; padding-left:5px; line-height:50px; margin-bottom:5px; font-size:20px; color:#222; font-weight:500}
 #join dl{width:100%; clear:both}
 #join dl dt{display:none}
 #join dl dd{width:100%; margin-bottom:10px;}
-#join dl dd input{width:390px; height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px}
+#join dl dd input{ height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px; margin: 5px;}
 #myupdate dl dd input{width:390px; height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px; margin: 3px}
 #myupdate dl dd p{width:390px; height:40px; padding:0 9px 0 9px; border:1px solid #B4B4B4; border-radius:5px; margin: 3px}
 

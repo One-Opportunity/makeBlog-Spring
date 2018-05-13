@@ -21,8 +21,7 @@ $(function() {
 });
 
 function addFile() {
-	var appendingFileHtml = "<input type='file' name='files' style='width:90%' /> <img src=${_ctx}/res/images/del.jpg style='width:25px; cursor:pointer;' onclick='delFile(this)'/>";
-	var size = $("td#tdFile > input[type=file]").length;
+	var appendingFileHtml = "<input type='file' name='files' style='width:90%' accept='image/gif, image/jpeg, image/png'/> <img src=${_ctx}/res/images/del.jpg style='width:25px; cursor:pointer;' onclick='delFile(this)'/>";	var size = $("td#tdFile > input[type=file]").length;
 	if (size < 5) {
 		$("#tdFile").append(appendingFileHtml);
 	} else {

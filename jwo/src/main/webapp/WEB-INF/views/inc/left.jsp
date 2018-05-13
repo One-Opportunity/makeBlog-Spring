@@ -16,10 +16,18 @@
 				$(json).each(
 						function(index) {
 							console.log(this);
-							if (this.parMapId == null) {
-								d.add(this.mapId, -1, this.mapName, "javascript:;");
+							if(this.mapId == 14 || this.mapId == 15 || this.mapId == 16 || this.mapId == 17 || this.mapId == 18 || this.mapId == 19){
+								if (this.parMapId == null) {
+									d.add(this.mapId, -1, this.mapName, "javascript:;");
+								} else {
+									d.add(this.mapId, this.parMapId, this.mapName, "${_ctx}/board/photo/list.god?mapId=" + this.mapId);
+								}
 							} else {
-								d.add(this.mapId, this.parMapId, this.mapName, "${_ctx}/board/doc/list.god?mapId=" + this.mapId);
+								if (this.parMapId == null) {
+									d.add(this.mapId, -1, this.mapName, "javascript:;");
+								} else {
+									d.add(this.mapId, this.parMapId, this.mapName, "${_ctx}/board/doc/list.god?mapId=" + this.mapId);
+								}
 							}
 						});
 				if($("#role").val()== 'MANAGER' || $("#role").val() == 'ADMIN'){

@@ -9,12 +9,12 @@
 	$(function() {
 		$("#header ul li").children().eq(0).addClass("on");
 		
-		$("input").focus(function() {
-			$(this).css("background-color", "#DDDDDD");
-		});
-		$("input").blur(function() {
-			$(this).css("background-color", "#ffffff");
-		});
+// 		$("input").focus(function() {
+// 			$(this).css("background-color", "#DDDDDD");
+// 		});
+// 		$("input").blur(function() {
+// 			$(this).css("background-color", "#ffffff");
+// 		});
 		$("#loginId").focus();
 		// "로그인" 버튼 클릭 시
 		$("#btnLogin").click(function() {
@@ -38,10 +38,10 @@
 </script>
 </head>
 
-<body>
+<body style="overflow-y: hidden;">
 	
-	<div id="loginWrap">
-		<div id="login">
+	<div id="loginWrap" >
+		<div id="login" class="login">
 			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
 				<font color="red"> Your login attempt was not successful due to <br /> <br /> <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
 				</font>
@@ -53,7 +53,7 @@
 					history.replaceState({}, null, location.pathname);
 				</script>
 			</c:if>
-			<h1>로그인 페이지</h1>
+			<h1>로그인</h1>
 			<form id="frmLogin" name="frmLogin" action="${_ctx}/security/login" method="post">
 
 				<dl>
@@ -69,10 +69,10 @@
 						<input type="password" name="loginPw" placeholder="Password" required="required">
 					</dd>
 				</dl>
-				<a href="javascript:;" class="loginBtn" id="btnLogin">로그인</a> 
-				<a href="${_ctx}/join.god" class="joinBtn">회원가입</a>
-				 <a href="${_ctx}/find.god">아이디/비밀번호 찾기</a> 
-				 <a href="">비밀번호찾기</a>
+				<a href="javascript:;" class="btn btn-primary btn-block btn-large" id="btnLogin" style="width: 48.4%; margin-right: 5px;display: inline-block; text-decoration:none;">로그인</a> 
+				<a href="${_ctx}/join.god" class="btn btn-primary btn-block btn-large" style="width: 48.4%; display: inline-block; text-decoration:none;">회원가입</a>
+				 <a href="${_ctx}/find.god" class="btn btn-primary btn-block btn-large" style="margin-top: 10px; text-decoration:none;" >아이디/비밀번호 찾기</a> 
+<!-- 				 <a href="">비밀번호찾기</a> -->
 			</form>
 		</div>
 	</div>

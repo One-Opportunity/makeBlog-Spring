@@ -63,7 +63,7 @@
 								
 							</select>
 						</dd>
-						<dd>
+						<dd class="d7">
 							<input type="text" name="searchText" placeholder="검색어" style="height: 20px;" value="${search.searchText}"/>
 						</dd>
 						<dd>
