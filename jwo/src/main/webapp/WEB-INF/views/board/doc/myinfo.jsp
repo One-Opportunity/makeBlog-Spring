@@ -63,8 +63,10 @@
 								
 							</select>
 						</dd>
-						<dd class="d7">
-							<input type="text" name="searchText" placeholder="검색어" style="height: 20px;" value="${search.searchText}"/>
+						<dd>
+							<div class="d7">
+							<input type="text" name="searchText" placeholder="검색어" value="${search.searchText}"/>
+							</div>
 						</dd>
 						<dd>
 						<div class="btnSet">

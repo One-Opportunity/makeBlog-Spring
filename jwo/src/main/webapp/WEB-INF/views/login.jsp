@@ -7,8 +7,11 @@
 
 <script>
 	$(function() {
-		$("#header ul li").children().eq(0).addClass("on");
-		
+		var url = "${_ctx}/board/dialog/popupdialog.god";
+		$.get(url, function (html) {
+			$("#popupdialog").html(html);
+
+		});
 // 		$("input").focus(function() {
 // 			$(this).css("background-color", "#DDDDDD");
 // 		});

@@ -11,6 +11,7 @@
 
 <!-- security="none" : security를 거치지 않고 경로 접속-->
  <http pattern="/res/**" security="none"/>
+ <http pattern="/upload/**" security="none"/>
  
  <http auto-config="true" use-expressions="true" >
  
@@ -26,6 +27,8 @@
   <intercept-url pattern="/security/login" access="permitAll"/>
   <intercept-url pattern="/board/*" access="permitAll"/>
   <intercept-url pattern="/popup/*" access="permitAll"/>
+  <intercept-url pattern="/board/dialog/*" access="permitAll"/>
+
   <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_MANAGER')"/>
  
 <!--  	

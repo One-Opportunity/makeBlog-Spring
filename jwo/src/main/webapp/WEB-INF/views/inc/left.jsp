@@ -16,7 +16,7 @@
 				$(json).each(
 						function(index) {
 							console.log(this);
-							if(this.mapId == 14 || this.mapId == 15 || this.mapId == 16 || this.mapId == 17 || this.mapId == 18 || this.mapId == 19){
+							if(this.parMapId == 7){
 								if (this.parMapId == null) {
 									d.add(this.mapId, -1, this.mapName, "javascript:;");
 								} else {
@@ -46,7 +46,7 @@
 <div id="leftWrap">
 
 <input type="hidden" id="role" value="${_user.role}"/>
-	<div id="infoWrap">
+	<div id="infoWrap" style="width: 100%;">
 		<div class="info_txt">
 		
 			<p class="info_name">${_user.loginId}</p>

@@ -128,7 +128,7 @@
 
 							<tr>
 								<td colspan="6" class="alignLeft"><c:forEach items="${docDTO.fileList}" var="file">
-								<img src="${_ctx}/${file.filePath}/${file.newFileName}.${file.fileExt}" style="width: 900px" /> <br/>
+								<img src="${_ctx}/${file.filePath}/${file.newFileName}.${file.fileExt}" style="width: 100%;" /> <br/>
 							</c:forEach>
 							${docDTO.boardContents}</td>
 							</tr>

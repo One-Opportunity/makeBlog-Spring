@@ -75,10 +75,8 @@
 						</dd>
 						<dd>
 						<div class="d7">
-							<form>
 							  <input type="text" name="searchText" placeholder="검색어 입력" value="${search.searchText}" />
 <%-- 							<input type="text" name="searchText" placeholder="검색어" style="height: 20px;" value="${search.searchText}"/> --%>
-							</form>
 						</div>
 						</dd>
 						<dd>

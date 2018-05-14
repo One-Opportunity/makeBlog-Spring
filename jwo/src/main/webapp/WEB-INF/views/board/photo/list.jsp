@@ -114,9 +114,7 @@
 						</dd>
 						<dd>
 						<div class="d7">
-							<form>
 							  <input type="text" name="searchText" placeholder="검색어 입력" value="${search.searchText}" />
-							</form>
 						</div>
 						</dd>
 						<dd>
@@ -134,14 +132,12 @@
 
 			<br/><br/><br/>
 <div class="sg">
-							<c:forEach items="${list}" var="item">
+<c:forEach items="${list}" var="item">
   <div class="sg-item"> 
   <%-- 사진 --%>
-<%--   <c:forEach items="${item.fileList}" var="file"> --%>
   <a href="javascript:goView('${item.docId}');"> <img src="${_ctx}/${item.fileList.get(0).filePath}/${item.fileList.get(0).newFileName}.${item.fileList.get(0).fileExt}" style="width: 200px; height: 200px; margin-bottom: 10px; " /> </a>
   
    <br/>
-<%--    </c:forEach> --%>
    <%-- 제목 --%>
     <a href="javascript:goView('${item.docId}');" style="color:black; font-size:20px; text-decoration:none; padding: 5px;">${item.title}  <c:if test="${item.cntComment > 0}">(${item.cntComment})</c:if></a>
     
@@ -158,10 +154,10 @@
     </p>
   </div>
 
-							</c:forEach>
+</c:forEach>
 </div>
 <br/>
-<div class="sg-paginate"> <a href="#" class="sg-up">▲</a><a href="#" class="sg-down">▼</a> </div>
+<div class="sg-paginate"> <a href="#" class="sg-up" style="padding: 0px;">▲</a><a href="#" class="sg-down" style="padding: 0px;">▼</a> </div>
 <br/>
 <br/>
 						
@@ -174,7 +170,6 @@
 			</div>
 
 		</div>
-	</div>
 <form id="frmView" method="get" name="frmView" action="${_ctx}/board/photo/view.god" class="search_area">
 	<input type="hidden" name="docId" id="docId"/>
 	<input type="hidden" name="mapId" id="mapId" value="${search.mapId}" />

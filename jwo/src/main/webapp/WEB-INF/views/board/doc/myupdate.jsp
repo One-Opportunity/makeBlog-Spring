@@ -131,18 +131,19 @@ font-family:tahoma;
 					
 				</div>
 			</div>
-			<div id="stylized" class="myform"style="width: 70%;">
-				<form id="frmMyUpdate" name="frmMyUpdate">
-					<input type="hidden" id="userId" name="userId" value="${userDTO.userId}"></input>
-						<input type="text" id="loginId" name="loginId" value="${userDTO.loginId}" readonly/>
+			<div id="stylized" class="myform"style="width: 40%; padding: 30px; margin: auto; border-radius: 10px;" >
+				<form id="frmMyUpdate" name="frmMyUpdate" >
+					<input type="hidden" id="userId" name="userId"  value="${userDTO.userId}"></input>
+						<input type="text" id="loginId" name="loginId" style="width: 90%;" value="${userDTO.loginId}" readonly/>
 						
-						<input type="password" id="loginPw" name="loginPw" placeholder="수정할 비밀번호를 입력하시오" maxlength="15" minlength="8" required />
-						<input type="password" name="reLoginPw" placeholder="수정할 비밀번호를 다시 입력하시오" maxlength="15" minlength="8" equalTo="#loginPw" required />
-						<input type="text" id="name" name="name" placeholder="${userDTO.name}" value="${userDTO.name}" maxlength="30" required />
-						<input type="text" id="phone" name="phone" placeholder="${userDTO.phone}" value="${userDTO.phone}" alt="mobile" maxlength="13" required /> 
-						<input type="email" id="email" name="email" placeholder="${userDTO.email}" value="${userDTO.email}" maxlength="20"  required />
-				<input type="hidden" id="checkedPhone" value="N" /> <input type="hidden" id="checkedEmail" value="N" /> <a href="javascript:;" class="loginBtn"
-					id="btnSave">저장</a> <a href="${_ctx}/main/index.god" class="joinBtn">취소</a>
+						<input type="password" id="loginPw" name="loginPw" style="width: 90%;" placeholder="수정할 비밀번호를 입력하시오" maxlength="15" minlength="8" required />
+						<input type="password" name="reLoginPw" style="width: 90%;" placeholder="수정할 비밀번호를 다시 입력하시오" maxlength="15" minlength="8" equalTo="#loginPw" required />
+						<input type="text" id="name" name="name" style="width: 90%;" placeholder="${userDTO.name}" value="${userDTO.name}" maxlength="30" required />
+						<input type="text" id="phone" name="phone" style="width: 90%;" placeholder="${userDTO.phone}" value="${userDTO.phone}" alt="mobile" maxlength="13" required /> 
+						<input type="email" id="email" name="email" style="width: 90%;" placeholder="${userDTO.email}" value="${userDTO.email}" maxlength="20"  required />
+				<input type="hidden" id="checkedPhone" value="N" /> <input type="hidden" id="checkedEmail" value="N" /> 
+				<a href="javascript:;" class="btn btn-primary btn-block btn-large" style=" text-decoration:none; width: 48.4%; display: inline-block;" id="btnSave">저장</a> 
+				<a href="${_ctx}/main/index.god" class="btn btn-primary btn-block btn-large" style=" text-decoration:none; width: 48.4%; display: inline-block;">취소</a>
 			</form>
 			</div>
 		

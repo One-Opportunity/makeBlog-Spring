@@ -56,7 +56,7 @@
 
 				<div class="boardWrap">
 
-					<form id="frmWrite" name="frmWrite" action="${_ctx}/board/photo/write.god" method="post" enctype="multipart/form-data">
+					<form id="frmWrite" name="frmWrite" action="${_ctx}/board/photo/write.god" method="post" style="background-color: #ffffff; color:black;" enctype="multipart/form-data">
 						
 						<input type="hidden" name="mapId" id="mapId" value="${boardDocDTO.mapId}" /> 
 						<input type="hidden" name="page" id="page" value="${search.page}" /> 

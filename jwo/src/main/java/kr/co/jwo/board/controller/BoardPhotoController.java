@@ -117,4 +117,10 @@ public class BoardPhotoController {
 		log.debug("====@@@@@@@@@@@@@@  boardDocDTO  @@@@@@@@@@@@@@@@@@@@@@@@ =====>>" + boardDocDTO);
 		return "redirect:./view.god?docId=" + boardDocDTO.getDocId() + "&" + search.getParams();
 	}
+	@RequestMapping(value = "/docremove.god", method=RequestMethod.GET)
+	public String remove(Integer docId, @ModelAttribute("search") BoardSearchDTO search) {
+		log.debug("BoardDocController의 remove에서 docId와 search:" + docId + ", " + search);
+		boardDocService.remove(docId);
+		return "redirect:./list.god?" + search.getParams();
+	}
 }
