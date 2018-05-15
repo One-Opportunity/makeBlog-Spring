@@ -13,8 +13,7 @@
 	       modal: false,
 	       close: function() {
 	       }, 
-	       position:[100,200]
-	       , show: {                // 애니메이션 효과 - 보여줄때
+	        show: {                // 애니메이션 효과 - 보여줄때
 	            effect: "blind",
 	            duration: 1000
 	        }

@@ -74,6 +74,8 @@
 		,BOARD_CONTENTS
 		,CNT_READ
 		,REG_DT
+		,SECRET_WRITE_YN
+		,SECRET_WRITE_PW
 		)
 		VALUES
 		(
@@ -84,6 +86,8 @@
 		,#{boardContents}
 		,0
 		,SYSDATE
+		,#{secretWriteYn}
+		,#{secretWritePw}
 		)
 	</insert>
 

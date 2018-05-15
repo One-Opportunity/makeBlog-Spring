@@ -108,8 +108,17 @@
 									<td>${item.docId}</td>
 									<td class="txtCut alignLeft">
 									
+									<c:choose>
+									<c:when test="${item.secretWriteYn=='Y'}">
+									<a href="javascript:goView('${item.docId}');">비밀글 입니다.
+									<img src="${_ctx}/res/images/rock.png" style="width: 2.5%;"  />
+									 
+									<c:if test="${item.cntComment > 0}">(${item.cntComment})</c:if></a>
+									</c:when>
+									<c:otherwise>
 									<a href="javascript:goView('${item.docId}');">${item.title}  <c:if test="${item.cntComment > 0}">(${item.cntComment})</c:if></a>
-									
+									</c:otherwise>
+									</c:choose>
 <%-- 									<a href="${_ctx}/board/doc/view.god?docId=${item.docId}&${search.params}"></a> --%>
 									</td>
 									<td>${item.name}</td>

@@ -7,6 +7,7 @@
 
 <script>
 	$(document).ready(function() {
+		
 		$("#btnDocSave").click(function() {
 			if ($("#frmWrite").valid()) {
 			    oEditors.getById["boardContents"].exec("UPDATE_CONTENTS_FIELD", []);
@@ -42,8 +43,17 @@
 		    fCreator: "createSEditor2"
 
 		});
-	});
 
+
+
+	});
+	function radioChecked(con){
+		 // 라디오 버튼 value 값 조건 비교
+			$("#con").append('<input type="password" name="secretWritePw" placeholder="비밀번호" maxlength="15" minlength="8" class="secretPw" id="secretWritePw" required style="margin-left: 30px; width: 30%; height: 80%"/><input type="password" class="secretPw" name="secretWritePw" placeholder="비밀번호확인" maxlength="15" minlength="8" required style="margin-left: 30px; width: 30%; height: 80%" equalTo="#secretWritePw" />')
+		}
+	function delSecretPw(pw) {
+		$(pw).remove();
+	}
 	function addFile() {
 		var appendingFileHtml = "<input type='file' name='files' style='width:90%' /> <img src=${_ctx}/res/images/del.jpg style='width:25px; cursor:pointer;' onclick='delFile(this)'/>";
 		var size = $("td#tdFile > input[type=file]").length;
@@ -54,7 +64,7 @@
 		}
 
 	}
-	function delFile(file) {
+	function delFile() {
 		console.log(file);
 		$(file).prev().remove();
 		$(file).remove();
@@ -98,6 +108,14 @@
 									</th>
 									<td id="tdFile"></td>
 
+								</tr>
+								<tr>
+									<th width="8%" class="t_color">비밀글여부</th>
+									<td id="con" style="text-align: left;">YES <input type="radio" name="secretWriteYn" onclick="radioChecked('con');" value="Y" style="width:15px;height:15px;border:1px;" />
+									NO <input type="radio" name="secretWriteYn" value="N"onclick="delSecretPw('.secretPw');" style="width:15px;height:15px;border:1px;" />
+
+									</td>	
+									
 								</tr>
 							</tbody>
 						</table>

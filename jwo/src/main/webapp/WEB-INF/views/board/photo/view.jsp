@@ -7,6 +7,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <c:import url="/WEB-INF/views/inc/head.jsp" />
+<link rel="stylesheet" href="${_ctx}/res/js/lightbox/magnific-popup.css"/>
+<script src="${_ctx}/res/js/lightbox/jquery.magnific-popup.js" ></script>
  <style>
   body {
    font-family: Arial, Helvetica, sans-serif;
@@ -37,6 +39,15 @@
 	}
 	$(function() {
 		
+		$('.parent-container').magnificPopup({
+			  delegate: 'a', // child items selector, by clicking on it popup will open
+			  type: 'image',
+			  gallery: {
+				  enabled : true,
+				  navigateByImgClick: true,
+				  preload: [0,1]
+			  }
+			});
 		$("#commentWrap").on("click", "#btnComment", function() {
 			var comments = $("#comments").val();
 
@@ -128,7 +139,11 @@
 
 							<tr>
 								<td colspan="6" class="alignLeft"><c:forEach items="${docDTO.fileList}" var="file">
+								<div class="parent-container">
+								<a href="${_ctx}/${file.filePath}/${file.newFileName}.${file.fileExt}">
 								<img src="${_ctx}/${file.filePath}/${file.newFileName}.${file.fileExt}" style="width: 100%;" /> <br/>
+								</a>
+								</div>
 							</c:forEach>
 							${docDTO.boardContents}</td>
 							</tr>
