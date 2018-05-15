@@ -24,6 +24,14 @@
 						});
 	});
 	
+	function goSecretPwDialog(pw, docId, mapId) {
+		var url = "${_ctx}/board/dialog/secretpw.god?secretWritePw=" + pw + "&docId=" + docId + "&mapId=" + mapId;
+		console.log(pw + ", " + docId);
+		$.get(url, function (html) {
+			$("#secretPwDialog").html(html);
+		});
+	}
+	
 	// 페이지 이동
 	function goPage(page){
 	$("#page").val(page);
@@ -43,7 +51,7 @@
 </head>
 
 <body>
-	<div id="popupdialog"></div>
+	<div id="secretPwDialog"></div>
 
 	<div id="wrap">
 
@@ -110,7 +118,7 @@
 									
 									<c:choose>
 									<c:when test="${item.secretWriteYn=='Y'}">
-									<a href="javascript:goView('${item.docId}');">비밀글 입니다.
+									<a href="javascript:goSecretPwDialog('${item.secretWritePw}', '${item.docId}', '${item.mapId}');">비밀글 입니다.
 									<img src="${_ctx}/res/images/rock.png" style="width: 2.5%;"  />
 									 
 									<c:if test="${item.cntComment > 0}">(${item.cntComment})</c:if></a>
