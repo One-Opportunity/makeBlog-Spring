@@ -10,7 +10,7 @@ public interface IBoardDocDAO {
 	public void insert(BoardDocDTO documentDTO);
 	public void update(BoardDocDTO documentDTO);
 	public void delete(int docId);
-	public BoardDocDTO selectOne(int docId);
+	public BoardDocDTO selectOne(BoardDocDTO _docDTO);
 	public List<BoardDocDTO> selectList(BoardSearchDTO boardSearchDTO);
 	public Integer selectCount(BoardSearchDTO boardSearchDTO);
 	public Integer selectCountByUserId(BoardSearchDTO boardSearchDTO);

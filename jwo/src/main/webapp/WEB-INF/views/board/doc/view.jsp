@@ -36,7 +36,42 @@
 		$("#frmList").submit();
 	}
 	$(function() {
-		
+		if("${docDTO.likeYn}" == "Y") {
+			$("#btnLike").attr("src", "${_ctx}/res/images/likeY.JPG");
+		} else if ("${docDTO.likeYn}" == "N" ){
+			$("#btnLike").attr("src", "${_ctx}/res/images/likeN.jpg");
+		} else if ("${docDTO.likeYn}" == "") {
+			$("#btnLike").attr("src", "${_ctx}/res/images/like.jpg");
+		}
+		$("#btnLike").click(function(){
+			
+			var likeYn = $(this).attr("data-like-yn");
+			console.log(likeYn);
+			var likeId = $(this).attr("data-like-id");
+			console.log(likeId);
+			var url = "${_ctx}/board/like/like.god";
+			var param = {"docId":"${docDTO.docId}", "likeYn" : "", "likeId" : likeId};
+			console.log(param);
+			
+			// 현재 좋아요 ==> 싫어요
+			if(likeYn == "Y") {
+				param.likeYn = "N";
+				
+			// 현재 싫어요 ==> 무관심	delete
+			} else if(likeYn == "N") {
+				param.likeYn = "";
+				
+			// 현재무관심 ==> 좋아요	
+			} else if(likeYn == "") {
+				param.likeYn = "Y";
+			}
+			$.post(url, param, function(data) {
+				console.log(data)
+				if(data.code == 9) {
+					location.reload();
+				}
+			})
+		})
 		$("#commentWrap").on("click", "#btnComment", function() {
 			var comments = $("#comments").val();
 
@@ -86,6 +121,10 @@
 			$("#userdialog").html(html);
 
 		});
+	
+		
+
+		
 	}
 </script>
 </head>
@@ -149,6 +188,8 @@
 						<c:if test="${userDTO.userId == docDTO.userId}">
 							<a href="${_ctx}/board/doc/docremove.god?${search.params}&docId=${docDTO.docId}" class="disPB btnBase">삭제</a>
 						</c:if>
+						<img src="#" style="cursor: pointer; width: 40px;" id="btnLike" data-like-yn="${docDTO.likeYn}" data-like-id="${docDTO.likeId}" />
+<%-- 						<img src="${_ctx}/res/images/likeN.jpg" style="cursor: pointer; width: 40px;"/> --%>
 					</div>
 
 					<div class="replyWrap" id="commentWrap"></div>

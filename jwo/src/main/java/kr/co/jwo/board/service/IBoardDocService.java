@@ -14,7 +14,7 @@ public interface IBoardDocService {
 
 	
 	public void editByCntRead(int docId);
-	public BoardDocDTO view(int docId);
+	public BoardDocDTO view(BoardDocDTO _docDTO);
 	public List<BoardDocDTO> listDoc(BoardSearchDTO boardSearchDTO);
 	public List<BoardDocDTO> listByUserId(BoardSearchDTO search);
 	public List<BoardDocDTO> listMyComment(Integer userId);

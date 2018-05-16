@@ -119,7 +119,7 @@
 									<c:choose>
 									<c:when test="${item.secretWriteYn=='Y'}">
 									<a href="javascript:goSecretPwDialog('${item.secretWritePw}', '${item.docId}', '${item.mapId}');">비밀글 입니다.
-									<img src="${_ctx}/res/images/rock.png" style="width: 2.5%;"  />
+									<img src="${_ctx}/res/images/rock.png" style="width: 15px;"  />
 									 
 									<c:if test="${item.cntComment > 0}">(${item.cntComment})</c:if></a>
 									</c:when>

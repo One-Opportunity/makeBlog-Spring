@@ -74,7 +74,7 @@ public class BoardPhotoController {
 	 * @param docId
 	 */
 	@RequestMapping(value = "/view.god", method = RequestMethod.GET)
-	public void view(Model model, @ModelAttribute("search") BoardSearchDTO search, Integer docId , HttpSession session) {
+	public void view(Model model, @ModelAttribute("search") BoardSearchDTO search, BoardDocDTO _docDTO , HttpSession session) {
 		UserDTO userDTO = (UserDTO)session.getAttribute("_user");
 		model.addAttribute("userDTO", userDTO);
 		
@@ -85,7 +85,7 @@ public class BoardPhotoController {
 		log.debug("view의  search" + search);
 
 		// 조회
-		BoardDocDTO docDTO = boardDocService.view(docId);
+		BoardDocDTO docDTO = boardDocService.view(_docDTO);
 		log.debug("view의 docDTO  >>>>>" + docDTO);
 		model.addAttribute("docDTO", docDTO);
 		
@@ -93,9 +93,9 @@ public class BoardPhotoController {
 
 	// 게시판 수정이동
 	@RequestMapping(value = "/edit.god", method = RequestMethod.GET)
-	public void goEdit(Model model, Integer docId, @ModelAttribute("search") BoardSearchDTO search) {
-		model.addAttribute("docId", docId);
-		BoardDocDTO docDTO = boardDocService.view(docId);
+	public void goEdit(Model model, BoardDocDTO _docDTO, @ModelAttribute("search") BoardSearchDTO search) {
+		model.addAttribute("docDTO", _docDTO);
+		BoardDocDTO docDTO = boardDocService.view(_docDTO);
 		log.debug("view의 docDTO  >>>>>" + docDTO);
 		model.addAttribute("docDTO", docDTO);
 	}

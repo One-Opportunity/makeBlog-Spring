@@ -21,6 +21,8 @@
 		var secretPw = $("#secretWritePw").val();
 		if(secretPw == secretPwC) {
 			document.location.href = "${_ctx}/board/doc/view.god?docId=${docId}&mapId=${mapId}"
+		} else {
+			alert("틀렸음");
 		}
 		
 	})
@@ -32,5 +34,5 @@
  <div class="dialog-form" title="잠겨있습니다, 비밀번호를 입력하세요." >
  <input type="hidden" id="secretWritePw" value="${secretWritePw}"/>
   <input type="password" id="secretWritePwC"/>
-  <a id="btnSecret" href="javascript:;"> 확인</a>
+  <a id="btnSecret" href="javascript:;">확인</a>
  </div>

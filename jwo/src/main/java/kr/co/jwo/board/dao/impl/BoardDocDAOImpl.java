@@ -30,8 +30,8 @@ public class BoardDocDAOImpl extends BaseDaoSupport implements IBoardDocDAO{
 	}
 
 	@Override
-	public BoardDocDTO selectOne(int docId) {
-		return this.getSqlSession().selectOne("BoardDoc.selectOneData", docId);
+	public BoardDocDTO selectOne(BoardDocDTO _docDTO) {
+		return this.getSqlSession().selectOne("BoardDoc.selectOneData", _docDTO);
 	}
 
 	@Override

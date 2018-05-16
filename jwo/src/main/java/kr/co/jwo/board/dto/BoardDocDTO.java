@@ -15,7 +15,9 @@ public class BoardDocDTO extends UserDTO{
 	private Integer docId = null,				// 게시물ID
 					userId = null,				// 사용자ID
 					mapId = null,				// 맵ID
-					cntRead = null;				// 조회수
+					cntRead = null,				// 조회수
+					viewrId = null,
+					likeId = null;
 	
 	private Integer cntFile = null;
 	private Integer cntComment = null;
@@ -24,7 +26,8 @@ public class BoardDocDTO extends UserDTO{
 					boardContents = null,		// 내용
 					mapName = null,
 					secretWriteYn = null,		// 비밀글 여부
-					secretWritePw = null;		// 비밀글 비밀번호
+					secretWritePw = null,		// 비밀글 비밀번호
+					likeYn		= null;			// 좋아요 여부
 	
 	private List<MultipartFile> files = null;	// 첨부파일
 	

@@ -3,32 +3,32 @@
 <mapper namespace="BoardLike">
 
 	<insert id="insert" parameterType="kr.co.jwo.board.dto.BoardLikeDTO">
-		<selectKey keyProperty="likeId" resultType="Integer" order="BEFORE">
-			SELECT SEQ_LIKE.NEXTVAL FROM DUAL
-		</selectKey>
-		INSERT INTO TB_BOARD_LIKE(
-		LIKE_ID
-		,DOC_ID
-		,USER_ID
-		,LIKE_YN
-		,REG_DT
-		) VALUES (
-		#{likeId}
-		,#{docId}
-		,#{userId}
-		,#{likeYn}
-		,#{regDt}
-		)
+		
+		MERGE INTO TB_BOARD_LIKE BL
+	    USING DUAL
+	        ON(BL.LIKE_ID = #{likeId})
+	    WHEN MATCHED THEN
+	        UPDATE SET LIKE_YN = #{likeYn}
+	    WHEN NOT MATCHED THEN INSERT(
+	        LIKE_ID
+			,DOC_ID
+			,USER_ID
+			,LIKE_YN
+			,REG_DT
+			) VALUES (
+	         SEQ_LIKE.NEXTVAL
+			,#{docId}
+			,#{userId}
+			,#{likeYn}
+			,SYSDATE
+			)
 	</insert>
-
-	<select id="selectOne" resultType="kr.co.jwo.board.dto.BoardLikeDTO" parameterType="Integer">
-		SELECT *
-		FROM TB_BOARD_LIKE
-		WHERE DOC_ID = #{docId}
-	</select>
 	
-	<update id="update" parameterType="String">
-		UPDATE TB_BOARD_LIKE 
-		SET LIKE_YN = #{likeYn}
-	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE 
+		FROM TB_BOARD_LIKE 
+		WHERE LIKE_ID = #{likeId}
+	
+	</delete>
+
 </mapper>

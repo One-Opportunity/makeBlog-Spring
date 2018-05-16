@@ -109,15 +109,15 @@ public class BoardDocServiceImpl implements IBoardDocService {
 
 	@Override
 	@Transactional
-	public BoardDocDTO view(int docId) {
+	public BoardDocDTO view(BoardDocDTO _docDTO) {
 		// 1. 조회수 증가
-		editByCntRead(docId);
+		editByCntRead(_docDTO.getDocId());
 		
 		// 2. 조회
-		BoardDocDTO boardDocDTO = documentDAO.selectOne(docId);
+		BoardDocDTO boardDocDTO = documentDAO.selectOne(_docDTO);
 		
 		// 3. 첨부파일 가져오기
-		List<BoardFileDTO> fileList = boardFileServiceImpl.list(docId);
+		List<BoardFileDTO> fileList = boardFileServiceImpl.list(_docDTO.getDocId());
 		boardDocDTO.setFileList(fileList);
 		log.debug("service의 view@@@@@@@@@@@@@들어오니?" + fileList);
 		

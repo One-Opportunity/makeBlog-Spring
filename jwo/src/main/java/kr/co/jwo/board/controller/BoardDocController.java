@@ -36,8 +36,6 @@ public class BoardDocController {
 	@Autowired
 	private IBoardMapService mapService = null;
 	@Autowired
-	private IBoardCommentService commentService = null;
-	@Autowired
 	private IUserService userService = null;
 
 	/**
@@ -113,18 +111,20 @@ public class BoardDocController {
 	 * @param docId
 	 */
 	@RequestMapping(value = "/view.god", method = RequestMethod.GET)
-	public void view(Model model, @ModelAttribute("search") BoardSearchDTO search, Integer docId , HttpSession session) {
-		UserDTO userDTO = (UserDTO)session.getAttribute("_user");
-		model.addAttribute("userDTO", userDTO);
+	public void view(Model model, @ModelAttribute("search") BoardSearchDTO search, BoardDocDTO boardDocDTO , HttpSession session) {
 		
 		// 통합맵 정보 가져오기
 		BoardMapDTO boardMapDTO = mapService.view(search.getMapId());
 		model.addAttribute("mapDTO", boardMapDTO);
-
 		log.debug("view의  search" + search);
+		
+		// 2. 로그인 한 사용자 ID 구하기
+		UserDTO userDTO = (UserDTO)session.getAttribute("_user");
+		boardDocDTO.setViewrId(userDTO.getUserId());
+		model.addAttribute("userDTO", userDTO);
 
 		// 조회
-		BoardDocDTO docDTO = boardDocService.view(docId);
+		BoardDocDTO docDTO = boardDocService.view(boardDocDTO);
 		log.debug("view의 docDTO  >>>>>" + docDTO);
 		model.addAttribute("docDTO", docDTO);
 		
@@ -133,9 +133,9 @@ public class BoardDocController {
 
 	// 게시판 수정이동
 	@RequestMapping(value = "/edit.god", method = RequestMethod.GET)
-	public void goEdit(Model model, Integer docId, @ModelAttribute("search") BoardSearchDTO search) {
-		model.addAttribute("docId", docId);
-		BoardDocDTO docDTO = boardDocService.view(docId);
+	public void goEdit(Model model, BoardDocDTO boardDocDTO, HttpSession session, @ModelAttribute("search") BoardSearchDTO search) {
+		model.addAttribute("docId", boardDocDTO);
+		BoardDocDTO docDTO = boardDocService.view(boardDocDTO);
 		log.debug("view의 docDTO  >>>>>" + docDTO);
 		model.addAttribute("docDTO", docDTO);
 	}

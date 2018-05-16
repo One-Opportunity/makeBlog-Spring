@@ -49,7 +49,7 @@
 	});
 	function radioChecked(con){
 		 // 라디오 버튼 value 값 조건 비교
-			$("#con").append('<input type="password" name="secretWritePw" placeholder="비밀번호" maxlength="15" minlength="8" class="secretPw" id="secretWritePw" required style="margin-left: 30px; width: 30%; height: 80%"/><input type="password" class="secretPw" placeholder="비밀번호확인" maxlength="15" minlength="8" required style="margin-left: 30px; width: 30%; height: 80%" equalTo="#secretWritePw" />')
+			$("#con").append('<input type="password" name="secretWritePw" placeholder="비밀번호" maxlength="8" minlength="4" class="secretPw" id="secretWritePw" required style="margin-left: 30px; width: 30%; height: 80%"/><input type="password" class="secretPw" placeholder="비밀번호확인" maxlength="8" minlength="4" required style="margin-left: 30px; width: 30%; height: 80%" equalTo="#secretWritePw" />')
 		}
 	function delSecretPw(pw) {
 		$(pw).remove();
