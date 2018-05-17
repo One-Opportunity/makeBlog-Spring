@@ -115,6 +115,7 @@ public class BoardDocServiceImpl implements IBoardDocService {
 		
 		// 2. 조회
 		BoardDocDTO boardDocDTO = documentDAO.selectOne(_docDTO);
+		log.debug("view 서비스의 _docDTO" + boardDocDTO);
 		
 		// 3. 첨부파일 가져오기
 		List<BoardFileDTO> fileList = boardFileServiceImpl.list(_docDTO.getDocId());

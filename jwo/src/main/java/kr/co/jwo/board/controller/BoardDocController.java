@@ -122,6 +122,7 @@ public class BoardDocController {
 		UserDTO userDTO = (UserDTO)session.getAttribute("_user");
 		boardDocDTO.setViewrId(userDTO.getUserId());
 		model.addAttribute("userDTO", userDTO);
+		log.debug("view의 boardDocDTO >>>>>>>" + boardDocDTO);
 
 		// 조회
 		BoardDocDTO docDTO = boardDocService.view(boardDocDTO);

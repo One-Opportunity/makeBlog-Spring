@@ -23,7 +23,7 @@
 	        }
 	     });	
 	    dialog.dialog( "open" );
-
+			
 })
  
  </script>
@@ -33,7 +33,7 @@
  <div class="dialog-form" title="${popupDTO.popTitle}" >
   
      <c:forEach items="${popupDTO.fileList}" var="file">
-       <img src="${_ctx}/${file.imgPath}/${file.newImgName}.${file.imgExt}" style="width:850px"/><br/>
+       <img src="${_ctx}/${file.imgPath}/${file.newImgName}.${file.imgExt}" id="img" style="width:850px"/><br/>
 
        </c:forEach>
  </div>
