@@ -127,6 +127,7 @@ public class BoardDocController {
 		// 조회
 		BoardDocDTO docDTO = boardDocService.view(boardDocDTO);
 		log.debug("view의 docDTO  >>>>>" + docDTO);
+		
 		model.addAttribute("docDTO", docDTO);
 		
 		

@@ -108,6 +108,8 @@
 	<select id="selectOneData" parameterType="kr.co.jwo.board.dto.BoardDocDTO" resultType="kr.co.jwo.board.dto.BoardDocDTO">
 		SELECT BD.*
 		, FN_USERNAME(BD.USER_ID) AS NAME
+		, (SELECT COUNT(*) FROM TB_BOARD_LIKE WHERE LIKE_YN = 'Y') CNT_LIKE_Y
+		, (SELECT COUNT(*) FROM TB_BOARD_LIKE WHERE LIKE_YN = 'N') CNT_LIKE_N 
 		, BL.LIKE_YN
 		, BL.LIKE_ID
 		FROM TB_BOARD_DOC BD
@@ -115,7 +117,7 @@
 		ON BD.DOC_ID = BL.DOC_ID
 			AND BL.USER_ID = #{viewrId}
 		WHERE BD.DOC_ID = #{docId}
-	
+	 
 	</select>
 
 	<select id="selectListByMapId" parameterType="kr.co.jwo.board.dto.BoardSearchDTO" resultType="kr.co.jwo.board.dto.BoardDocDTO">

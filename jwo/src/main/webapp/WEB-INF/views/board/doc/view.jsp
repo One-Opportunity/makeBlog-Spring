@@ -28,6 +28,9 @@
     div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
     .ui-dialog .ui-state-error { padding: .3em; }
     .validateTips { border: 1px solid transparent; padding: 0.3em; }
+    .likeContainer{width 20%;}
+    .likeContainer>div{width: 40px; height: 40px; float: left;}
+    .likeContainer>div>span{display: inline-block; width: 100%; text-align: center; font-size: 20px; font-weight: bold;}
   </style>
 <script>
 	//목록으로 다시 이동
@@ -38,10 +41,13 @@
 	$(function() {
 		if("${docDTO.likeYn}" == "Y") {
 			$("#btnLike").attr("src", "${_ctx}/res/images/likeY.JPG");
+			$("#btnLike").attr("title", "'싫어요'로 바꾸시겠습니까??");
 		} else if ("${docDTO.likeYn}" == "N" ){
 			$("#btnLike").attr("src", "${_ctx}/res/images/likeN.jpg");
+			$("#btnLike").attr("title", "초기화 하시겠습니까?");
 		} else if ("${docDTO.likeYn}" == "") {
 			$("#btnLike").attr("src", "${_ctx}/res/images/like.jpg");
+			$("#btnLike").attr("title", "'좋아요'로 바꾸시겠습니까??");
 		}
 		$("#btnLike").click(function(){
 			
@@ -179,16 +185,29 @@
 							<tr>
 								<td colspan="6" class="alignLeft">${docDTO.boardContents}</td>
 							</tr>
-						</tbody>
+							
 					</table>
 
 					<div class="btnSet">
-						<a href="javascript:goList('${docDTO.mapId}')" class="disPB btnBase">목록</a> <a href="${_ctx}/board/doc/write.god?mapId=${docDTO.mapId}" class="disPB btnBase">글쓰기</a> 
-							<a href="${_ctx}/board/doc/edit.god?${search.params}&docId=${docDTO.docId}" id="btnUpdate" class="disPB btnBase">수정</a>
+						</tbody>
+						<div class="likeContainer">
+							<div>
+								<img src="${_ctx}/res/images/heart.png" align="bottom" style="cursor: pointer; width: 40px; float: left;"/>
+								<span>${docDTO.cntLikeY}</span>				
+							</div>
+							<div>
+								<img src="${_ctx}/res/images/hate.png" style="cursor: pointer; width: 40px; float: left;" />
+								<span>${docDTO.cntLikeN}</span>
+							</div>
+						</div>
+						<img class="disPB btnBase" src="#" style=" padding:0; cursor: pointer; width: 40px;" id="btnLike"  data-like-yn="${docDTO.likeYn}" data-like-id="${docDTO.likeId}" title="Click" />
+						<a href="javascript:goList('${docDTO.mapId}')" class="disPB btnBase">목록</a> 
+						<a href="${_ctx}/board/doc/write.god?mapId=${docDTO.mapId}" class="disPB btnBase">글쓰기</a> 
+						<a href="${_ctx}/board/doc/edit.god?${search.params}&docId=${docDTO.docId}" id="btnUpdate" class="disPB btnBase">수정</a>
+						
 						<c:if test="${userDTO.userId == docDTO.userId}">
 							<a href="${_ctx}/board/doc/docremove.god?${search.params}&docId=${docDTO.docId}" class="disPB btnBase">삭제</a>
 						</c:if>
-						<img src="#" style="cursor: pointer; width: 40px;" id="btnLike" data-like-yn="${docDTO.likeYn}" data-like-id="${docDTO.likeId}" />
 <%-- 						<img src="${_ctx}/res/images/likeN.jpg" style="cursor: pointer; width: 40px;"/> --%>
 					</div>
 

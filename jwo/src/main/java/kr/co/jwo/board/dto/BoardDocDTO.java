@@ -19,6 +19,9 @@ public class BoardDocDTO extends UserDTO{
 					viewrId = null,
 					likeId = null;
 	
+	private Integer cntLikeY = null;
+	private Integer cntLikeN = null;
+	
 	private Integer cntFile = null;
 	private Integer cntComment = null;
 	
