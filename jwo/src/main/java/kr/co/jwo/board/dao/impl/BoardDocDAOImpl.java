@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.jwo.board.dao.IBoardDocDAO;
 import kr.co.jwo.board.dto.BoardDocDTO;
+import kr.co.jwo.board.dto.BoardLikeDTO;
 import kr.co.jwo.board.dto.BoardSearchDTO;
 import kr.co.jwo.common.dao.BaseDaoSupport;
 
@@ -62,6 +63,11 @@ public class BoardDocDAOImpl extends BaseDaoSupport implements IBoardDocDAO{
 	@Override
 	public List<BoardDocDTO> selectListMyComment(Integer userId) {
 		return this.getSqlSession().selectList("BoardDoc.selectListMyComment", userId);
+	}
+
+	@Override
+	public List<BoardDocDTO> selectListMyLike(BoardLikeDTO _likeDTO) {
+		return this.getSqlSession().selectList("BoardDoc.selectListMyLike", _likeDTO);
 	}
 
 	

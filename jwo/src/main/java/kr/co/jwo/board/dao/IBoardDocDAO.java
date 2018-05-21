@@ -3,6 +3,7 @@ package kr.co.jwo.board.dao;
 import java.util.List;
 
 import kr.co.jwo.board.dto.BoardDocDTO;
+import kr.co.jwo.board.dto.BoardLikeDTO;
 import kr.co.jwo.board.dto.BoardSearchDTO;
 
 public interface IBoardDocDAO {
@@ -17,4 +18,5 @@ public interface IBoardDocDAO {
 	public void updateByCntRead(int docId);
 	public List<BoardDocDTO> selectListByUserId(BoardSearchDTO search);
 	public List<BoardDocDTO> selectListMyComment(Integer userId);
+	public List<BoardDocDTO> selectListMyLike(BoardLikeDTO _likeDTO);
 }

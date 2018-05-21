@@ -108,8 +108,8 @@
 	<select id="selectOneData" parameterType="kr.co.jwo.board.dto.BoardDocDTO" resultType="kr.co.jwo.board.dto.BoardDocDTO">
 		SELECT BD.*
 		, FN_USERNAME(BD.USER_ID) AS NAME
-		, (SELECT COUNT(*) FROM TB_BOARD_LIKE WHERE LIKE_YN = 'Y') CNT_LIKE_Y
-		, (SELECT COUNT(*) FROM TB_BOARD_LIKE WHERE LIKE_YN = 'N') CNT_LIKE_N 
+		, (SELECT COUNT(*) FROM TB_BOARD_LIKE WHERE DOC_ID = BD.DOC_ID AND LIKE_YN = 'Y') CNT_LIKE_Y
+		, (SELECT COUNT(*) FROM TB_BOARD_LIKE WHERE DOC_ID = BD.DOC_ID AND LIKE_YN = 'N') CNT_LIKE_N 
 		, BL.LIKE_YN
 		, BL.LIKE_ID
 		FROM TB_BOARD_DOC BD
@@ -220,4 +220,10 @@
 		)
 	</select>
 
+    <select id="selectListMyLike" parameterType="kr.co.jwo.board.dto.BoardLikeDTO" resultType="kr.co.jwo.board.dto.BoardDocDTO">
+        SELECT BL.LIKE_YN, BD.*
+        FROM TB_BOARD_LIKE BL, TB_BOARD_DOC BD
+        WHERE BL.USER_ID = #{userId} AND BL.DOC_ID = BD.DOC_ID AND BL.LIKE_YN = #{likeYn}
+    
+    </select>
 </mapper>

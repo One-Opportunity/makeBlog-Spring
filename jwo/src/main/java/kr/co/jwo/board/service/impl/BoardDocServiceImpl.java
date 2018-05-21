@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.co.jwo.board.dao.IBoardDocDAO;
 import kr.co.jwo.board.dto.BoardDocDTO;
 import kr.co.jwo.board.dto.BoardFileDTO;
+import kr.co.jwo.board.dto.BoardLikeDTO;
 import kr.co.jwo.board.dto.BoardSearchDTO;
 import kr.co.jwo.board.service.IBoardCommentService;
 import kr.co.jwo.board.service.IBoardDocService;
@@ -172,6 +173,21 @@ public class BoardDocServiceImpl implements IBoardDocService {
 	public List<BoardDocDTO> listMyComment(Integer userId) {
 		
 		return documentDAO.selectListMyComment(userId);
+	}
+
+
+	@Override
+	public List<BoardDocDTO> listMyLikeY(BoardLikeDTO _likeDTO) {
+		_likeDTO.setLikeYn("Y");
+		List<BoardDocDTO> list = documentDAO.selectListMyLike(_likeDTO);
+			
+		return list; 
+	}
+	@Override
+	public List<BoardDocDTO> listMyLikeN(BoardLikeDTO _likeDTO) {
+		_likeDTO.setLikeYn("N");
+		List<BoardDocDTO> list = documentDAO.selectListMyLike(_likeDTO);
+		return list;
 	}
 
 }

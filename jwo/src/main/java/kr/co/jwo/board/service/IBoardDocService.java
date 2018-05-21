@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import kr.co.jwo.board.dto.BoardDocDTO;
+import kr.co.jwo.board.dto.BoardLikeDTO;
 import kr.co.jwo.board.dto.BoardSearchDTO;
 
 public interface IBoardDocService {
@@ -18,4 +19,6 @@ public interface IBoardDocService {
 	public List<BoardDocDTO> listDoc(BoardSearchDTO boardSearchDTO);
 	public List<BoardDocDTO> listByUserId(BoardSearchDTO search);
 	public List<BoardDocDTO> listMyComment(Integer userId);
+	public List<BoardDocDTO> listMyLikeY(BoardLikeDTO _likeDTO);
+	public List<BoardDocDTO> listMyLikeN(BoardLikeDTO _likeDTO);
 }

@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.jwo.board.dto.BoardCommentDTO;
 import kr.co.jwo.board.dto.BoardDocDTO;
+import kr.co.jwo.board.dto.BoardLikeDTO;
 import kr.co.jwo.board.dto.BoardMapDTO;
 import kr.co.jwo.board.dto.BoardSearchDTO;
 import kr.co.jwo.board.service.IBoardCommentService;
@@ -206,8 +207,20 @@ public class BoardDocController {
 		
 	}
 	
-	@RequestMapping(value= "totalboard.god", method=RequestMethod.GET)
+	@RequestMapping(value= "/totalboard.god", method=RequestMethod.GET)
 	public void totalBoard() {
 		
+	}
+	
+	@RequestMapping(value= "/mylike.god", method=RequestMethod.GET)
+	public void myLike(Model model, HttpSession session) {
+		UserDTO userDTO = (UserDTO)session.getAttribute("_user");
+		BoardLikeDTO likeDTO = new BoardLikeDTO();
+		likeDTO.setUserId(userDTO.getUserId());
+		List<BoardDocDTO> listY = boardDocService.listMyLikeY(likeDTO);
+		
+		List<BoardDocDTO> listN = boardDocService.listMyLikeN(likeDTO);
+		model.addAttribute("listY", listY);
+		model.addAttribute("listN", listN);
 	}
 }
