@@ -50,8 +50,12 @@
 		<div class="info_txt">
 		
 			<p class="info_name">${_user.loginId}</p>
-			<p class="info_name">${_user.name}</p>
-			<p class="info_date"><fmt:formatDate value="${_user.regDt}" pattern="yyyy.MM.dd HH시 mm분"/> </p>
+			<p class="info_name">${_user.name} <a href="${_ctx}/memo/index.god">
+			<img src="${_ctx}/res/images/memo.png" style="width: 20px;" />
+			</a></p>
+			<p class="info_date"><fmt:formatDate value="${_user.regDt}" pattern="yyyy.MM.dd HH시 mm분"/> 
+			</p>
+			
 			<p class="info_pic">
 				<img src="${_ctx}/res/images/thum_img.jpg" alt="thum">
 			</p>

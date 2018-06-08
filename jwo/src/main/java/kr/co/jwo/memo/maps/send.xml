@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="send">
+	<insert id="insert" parameterType="kr.co.jwo.memo.dto.NoteSendDTO">
+		INSERT INTO TB_NOTE_SEND ( 
+			NOTE_ID
+			, RECIEVE_ID
+			, SEND_ID
+		) VALUES (
+			SEQ_SEND.NEXTVAL
+			, #{recieveId}
+			, #{sendId}
+		)
+	</insert>
+	
+	<select id="selectOne" parameterType="Integer" resultType="kr.co.jwo.memo.dto.NoteSendDTO">
+		
+	</select>
+	
+	<select id="selectList" parameterType="Integer" resultType="kr.co.jwo.memo.dto.NoteSendDTO">
+	
+	</select>
+	
+	<update id="delete" parameterType="Integer">
+		
+	</update>
+</mapper>

@@ -13,7 +13,7 @@
             <li><a href="${_ctx}/board/doc/myupdate.god">나의 정보 수정</a></li>
             <li><a href="${_ctx}/board/doc/mycomment.god">내가 댓글 단 글</a></li>
             <li><a href="${_ctx}/board/doc/mylike.god">내가 좋아요 한 글</a></li>
-            <li><a href="${_ctx}/chat/home.god">후원하기</a></li>
+            <li><a href="${_ctx}/chat/home.god">채팅</a></li>
              
         </ul>
     </div>

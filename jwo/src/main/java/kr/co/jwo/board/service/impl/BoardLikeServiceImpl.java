@@ -22,7 +22,7 @@ public class BoardLikeServiceImpl implements IBoardLikeService{
 		if(likeDTO.getLikeYn() == null || likeDTO.getLikeYn().equals("")) {
 			this.remove(likeDTO.getLikeId());
 		} else{
-		likeDAO.insert(likeDTO);
+			likeDAO.insert(likeDTO);
 		}
 	}
 	

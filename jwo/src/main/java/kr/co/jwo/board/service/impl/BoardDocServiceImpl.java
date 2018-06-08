@@ -137,7 +137,7 @@ public class BoardDocServiceImpl implements IBoardDocService {
 		
 		for(BoardDocDTO docDTO : list) {
 			// 첨부파일 갯수가 0 이상 일 경우만 첨부파일 목록을 가져온다
-			if(docDTO.getCntFile() > 0) {
+			if(docDTO.getCntFile() != 10000 ) {
 				List<BoardFileDTO> fileList = boardFileServiceImpl.list(docDTO.getDocId());
 				docDTO.setFileList(fileList);
 			}

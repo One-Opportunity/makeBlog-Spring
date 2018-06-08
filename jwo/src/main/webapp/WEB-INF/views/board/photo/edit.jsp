@@ -68,7 +68,8 @@ function delFile(file) {
 
 					<form id="frmEdit" name="frmEidt" action="${_ctx}/board/photo/edit.god" method="post" enctype="multipart/form-data">
 
-						<input type="hidden" name="mapId" id="mapId" value="${search.mapId}"></input> <input type="hidden" name="docId" id="docId" value="${docId}"></input>
+						<input type="hidden" name="mapId" id="mapId" value="${search.mapId}"></input> 
+						<input type="hidden" name="docId" id="docId" value="${docDTO.docId}"></input>
 						<table class="base_tbl tbl_write">
 							<tbody>
 								<tr>

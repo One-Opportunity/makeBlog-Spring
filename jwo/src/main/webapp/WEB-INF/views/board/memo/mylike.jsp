@@ -87,10 +87,10 @@
 <!-- 			</header> -->
 			<section class="tabs">
 	            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
-		        <label for="tab-1" class="tab-label-1">좋아요</label>
+		        <label for="tab-1" class="tab-label-1">보낸쪽지함</label>
 		
 	            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
-		        <label for="tab-2" class="tab-label-2">싫어요</label>
+		        <label for="tab-2" class="tab-label-2">받은쪽지함</label>
 		
 			    <div class="clear-shadow"></div>
 			

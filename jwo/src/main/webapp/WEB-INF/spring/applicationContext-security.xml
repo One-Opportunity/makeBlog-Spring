@@ -6,7 +6,6 @@
 
  <global-method-security secured-annotations="enabled" 
  	pre-post-annotations="enabled">
-  <expression-handler ref="methodSecurityExpressionHandler"/>
  </global-method-security>
 
 <!-- security="none" : security를 거치지 않고 경로 접속-->
